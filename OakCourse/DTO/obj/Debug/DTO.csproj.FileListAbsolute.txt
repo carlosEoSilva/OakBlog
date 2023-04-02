@@ -1,0 +1,5 @@
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\bin\Debug\DTO.dll
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\bin\Debug\DTO.pdb
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\obj\Debug\DTO.dll
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\obj\Debug\DTO.pdb
