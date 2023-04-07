@@ -9,3 +9,6 @@ C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCou
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\BLL\bin\Debug\DAL.pdb
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\BLL\bin\Debug\DTO.pdb
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\BLL\bin\Debug\EntityFramework.dll
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\BLL\bin\Debug\DAL.dll.config
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\BLL\bin\Debug\EntityFramework.xml
