@@ -74,3 +74,8 @@ C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCou
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\UI\bin\DTO.dll
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\UI\bin\BLL.pdb
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\UI\bin\DTO.pdb
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\UI\bin\DAL.dll
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\UI\bin\EntityFramework.dll
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\UI\bin\DAL.pdb
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\UI\bin\DAL.dll.config
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\UI\bin\EntityFramework.xml
