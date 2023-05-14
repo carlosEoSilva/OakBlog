@@ -58,7 +58,6 @@
     <Compile Include="Category.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Comment.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
@@ -75,6 +74,7 @@
     <Compile Include="Meta.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="MetaDAO.cs" />
     <Compile Include="Post.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
@@ -107,6 +107,7 @@
     <Compile Include="SocialMedia.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="SocialMediaDAO.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>

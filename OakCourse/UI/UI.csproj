@@ -90,17 +90,26 @@
   <ItemGroup>
     <Content Include="Areas\Admin\Content\css\adminlte.min.css" />
     <Content Include="Areas\Admin\Content\css\all.min.css" />
+    <Content Include="Areas\Admin\Content\css\dataTables.bootstrap4.min.css" />
     <Content Include="Areas\Admin\Content\css\font-awesome\all.min.css" />
     <Content Include="Areas\Admin\Content\css\font-awesome\fontawesome.min.css" />
     <Content Include="Areas\Admin\Content\css\icheck-bootstrap.min.css" />
+    <Content Include="Areas\Admin\Content\css\responsive.bootstrap4.min.css" />
+    <Content Include="Areas\Admin\Content\icons\delete-icon.png" />
+    <Content Include="Areas\Admin\Content\icons\refresh-icon.png" />
     <Content Include="Areas\Admin\Content\js\adminlte.min.js" />
     <Content Include="Areas\Admin\Content\js\bootstrap.bundle.min.js" />
+    <Content Include="Areas\Admin\Content\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Areas\Admin\Content\js\dataTables.responsive.min.js" />
     <Content Include="Areas\Admin\Content\js\demo.js" />
     <Content Include="Areas\Admin\Content\js\font-awesome\all.min.js" />
     <Content Include="Areas\Admin\Content\js\font-awesome\fontawesome.min.js" />
+    <Content Include="Areas\Admin\Content\js\jquery.dataTables.min.js" />
     <Content Include="Areas\Admin\Content\js\jquery.min.js" />
+    <Content Include="Areas\Admin\Content\js\responsive.bootstrap4.min.js" />
     <Content Include="Areas\Admin\Content\tempimage\logo.jpg" />
     <Content Include="Areas\Admin\Content\tempimage\user3-128x128.jpg" />
+    <Content Include="Areas\Admin\Views\User\AddUser.cshtml" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -110,9 +119,12 @@
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MetaController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SocialMediaController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Help.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +133,18 @@
     <Content Include="Areas\Admin\Views\Login\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\AdminLayout.cshtml" />
     <Content Include="Areas\Admin\Views\Post\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Meta\AddMeta.cshtml" />
+    <Content Include="Areas\Admin\Views\Meta\Partial\MetaForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\MessageForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Meta\MetaList.cshtml" />
+    <Content Include="Areas\Admin\Views\Meta\UpdateMeta.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialMedia\AddSocialMedia.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialMedia\Partial\SocialMediaForm.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialMedia\SocialMediaList.cshtml" />
+    <Content Include="Areas\Admin\Views\SocialMedia\UpdateSocialMedia.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Partial\UserForm.cshtml" />
+    <Content Include="Areas\Admin\Views\User\UserList.cshtml" />
+    <Content Include="Areas\Admin\Views\User\UpdateUser.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -131,8 +155,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Content\SocialMediaImages\" />
+    <Folder Include="Areas\Admin\Content\UserImage\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\Meta\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
@@ -140,6 +165,10 @@
     <ProjectReference Include="..\BLL\BLL.csproj">
       <Project>{79a6a634-e958-4a47-bef1-0dacb94cf771}</Project>
       <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{EEC1F327-A6E3-41E0-BD84-09F083D99F5D}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{6b6a1bfd-cc1d-48b2-a5e5-44711d0a7621}</Project>

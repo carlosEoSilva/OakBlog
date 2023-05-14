@@ -17,6 +17,10 @@
     <!-- overlayScrollbars -->
     <link href="~/Areas/Admin/Content/css/adminlte.min.css" rel="stylesheet" />
 
+    <!-- DataTables -->
+    <link href="~/Areas/Admin/Content/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Areas/Admin/Content/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -27,11 +31,7 @@
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
             <!-- Left navbar links -->
-            
-
             <!-- SEARCH FORM -->
-            
-
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
@@ -134,7 +134,7 @@
 
                 @*imagem do logo vai aqui*@
                 @*<img src="~/Areas/Admin/Content/tempimage/logo.jpg" />*@
-                
+
                 <span class="brand-text font-weight-light">MySite</span>
             </a>
 
@@ -689,7 +689,7 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-            <section class="content-header">
+            @*<section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
@@ -702,11 +702,13 @@
                             </ol>
                         </div>
                     </div>
-                </div><!-- /.container-fluid -->
-            </section>
+                </div>*@
+            <!-- /.container-fluid -->
+            @*</section>*@
 
             <!-- Main content -->
-
+            <!-- é aqui que o conteúdo das outras views que usam este template será renderizado -->
+            <!-- o RenderBody será substituído pelo HTML das outras Views -->
             @RenderBody()
 
             <!-- /.content -->
@@ -730,14 +732,43 @@
     <!-- ./wrapper -->
     <!-- jQuery -->
     <script src="~/Areas/Admin/Content/js/jquery.min.js"></script>
+
     <!-- Bootstrap 4 -->
     <script src="~/Areas/Admin/Content/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="~/Areas/Admin/Content/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/responsive.bootstrap4.min.js"></script>
+
     <!-- AdminLTE App -->
     <script src="~/Areas/Admin/Content/js/adminlte.min.js"></script>
+
     <!-- AdminLTE for demo purposes -->
     <script src="~/Areas/Admin/Content/js/demo.js"></script>
-    @*Font Awesome*@
+
+    <!-- Font Awesome -->
     <script src="~/Areas/Admin/Content/js/font-awesome/all.min.js"></script>
     <script src="~/Areas/Admin/Content/js/font-awesome/fontawesome.min.js"></script>
+
+    <!-- page script DataTables -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
 </body>
 </html>
