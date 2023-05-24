@@ -68,7 +68,7 @@ namespace UI.Areas.Admin.Controllers
             }
             return View(model);
         }
-    
+
         [HttpPost]
         public ActionResult UpdateUser(UserDTO model)
         {
@@ -78,7 +78,7 @@ namespace UI.Areas.Admin.Controllers
             }
             else
             {
-                if(model.UserImage != null)
+                if (model.UserImage != null)
                 {
                     string filename = "";
                     HttpPostedFileBase postedfile = model.UserImage;
@@ -95,15 +95,19 @@ namespace UI.Areas.Admin.Controllers
                     }
 
                     string oldImagePath = bll.UpdateUser(model);
+
+                    if (model.UserImage != null)
+                    {
+                        if (System.IO.File.Exists(Server.MapPath("~/Areas/Admin/Content/UserImage/" + oldImagePath)))
+                        {
+                            System.IO.File.Delete(Server.MapPath("~/Areas/Admin/Content/UserImage/" + oldImagePath));
+                        }
+                        ViewBag.ProcessState = General.Messages.UpdateSuccess;
+                    }
+                }
             }
-
-
-
             return View(model);
         }
-    
-    
-    
     }
 }
 

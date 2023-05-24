@@ -55,6 +55,8 @@
     <Compile Include="Address.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AddressDAO.cs" />
+    <Compile Include="AdsDAO.cs" />
     <Compile Include="Category.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
@@ -64,6 +66,7 @@
     <Compile Include="Contact.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FavDAO.cs" />
     <Compile Include="FavLogoTitle.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
@@ -75,6 +78,7 @@
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MetaDAO.cs" />
+    <Compile Include="MyUtils.cs" />
     <Compile Include="Post.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
@@ -118,6 +122,7 @@
     <Compile Include="Video.cs">
       <DependentUpon>PostModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="VideoDAO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

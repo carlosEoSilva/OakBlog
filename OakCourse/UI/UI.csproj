@@ -116,15 +116,18 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AddressController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FavController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MetaController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
     <Compile Include="Areas\Admin\Controllers\SocialMediaController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helper\Help.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +148,18 @@
     <Content Include="Areas\Admin\Views\User\Partial\UserForm.cshtml" />
     <Content Include="Areas\Admin\Views\User\UserList.cshtml" />
     <Content Include="Areas\Admin\Views\User\UpdateUser.cshtml" />
+    <Content Include="Areas\Admin\Views\Ads\AddAds.cshtml" />
+    <Content Include="Areas\Admin\Views\Ads\Partial\AdsForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Ads\AdsList.cshtml" />
+    <Content Include="Areas\Admin\Views\Ads\UpdateAds.cshtml" />
+    <Content Include="Areas\Admin\Views\Fav\UpdateFav.cshtml" />
+    <Content Include="Areas\Admin\Views\Fav\Partial\FavForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Address\AddAddress.cshtml" />
+    <Content Include="Areas\Admin\Views\Address\Partial\AddressForm.cshtml" />
+    <Content Include="Areas\Admin\Views\Address\AddressList.cshtml" />
+    <Content Include="Areas\Admin\Views\Address\UpdateAddress.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\AddVideo.cshtml" />
+    <Content Include="Areas\Admin\Views\Video\Partial\AddVideoForm.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -155,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Content\AdsImage\" />
+    <Folder Include="Areas\Admin\Content\FavImage\" />
     <Folder Include="Areas\Admin\Content\SocialMediaImages\" />
     <Folder Include="Areas\Admin\Content\UserImage\" />
     <Folder Include="Areas\Admin\Data\" />

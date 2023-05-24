@@ -77,15 +77,15 @@ namespace DAL
                 string oldImagePath = user.ImagePath;
                 
                 user.NameSurname = model.Name;
-                user.Username = Encoding.UTF7.GetBytes(model.Username);
+                user.Username = MyUtils.StringParaByte(model.Username);
 
                 if(model.ImagePath != null)
                 {
                     user.ImagePath = model.ImagePath;
                 }
 
-                user.Email = model.Email;
-                user.Password = model.Password;
+                user.Email = MyUtils.StringParaByte(model.Email);
+                user.Password = MyUtils.StringParaByte(model.Password);
                 user.LastUpdateDate = DateTime.Now;
                 user.LastUpdateUserID = UserStatic.UserID;
                 user.isAdmin = model.isAdmin;
@@ -93,6 +93,10 @@ namespace DAL
                 db.SaveChanges();
                 return oldImagePath;
 
+            }
+            catch(Exception ex)
+            {
+                throw ex;
             }
         }
 

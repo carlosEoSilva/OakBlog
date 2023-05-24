@@ -43,11 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressDTO.cs" />
+    <Compile Include="AdsDTO.cs" />
+    <Compile Include="FavDTO.cs" />
     <Compile Include="MetaDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SocialMediaDTO.cs" />
     <Compile Include="UserDTO.cs" />
     <Compile Include="UserStatic.cs" />
+    <Compile Include="VideoDTO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

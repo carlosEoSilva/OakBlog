@@ -11,21 +11,34 @@ namespace DAL
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations.Schema;
+
     public partial class Address
     {
         public int ID { get; set; }
+
         public string Address1 { get; set; }
+
         public string Email { get; set; }
+
         public string Phone { get; set; }
+
         public string Phone2 { get; set; }
+
         public string Fax { get; set; }
+
         public string MapPathLarge { get; set; }
+
         public string MapPathSmall { get; set; }
+
         public System.DateTime AddDate { get; set; }
+
         public bool isDeleted { get; set; }
+
         public Nullable<System.DateTime> DeletedDate { get; set; }
+
         public int LastUpdateUserID { get; set; }
+
         public System.DateTime LastUpdateDate { get; set; }
     
         public virtual T_User T_User { get; set; }
