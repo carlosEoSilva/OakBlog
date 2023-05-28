@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using BLL;
+using DTO;
+using System.Web.Mvc;
 
 namespace UI.Areas.Admin.Controllers
 {
@@ -8,6 +10,13 @@ namespace UI.Areas.Admin.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult AddPost()
+        {
+            PostDTO model = new PostDTO();
+            model.Categories = CategoryBLL.GetCategoriesForDropdown();
+            return View(model);
         }
     }
 }
