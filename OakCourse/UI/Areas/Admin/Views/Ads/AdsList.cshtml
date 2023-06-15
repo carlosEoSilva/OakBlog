@@ -5,7 +5,9 @@
 }
 
 
-@model List<DTO.AdsDTO> 
+@model List<DTO.AdsDTO>
+
+@Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")
 
 <section class="content-header">
     <h1>Ads List</h1>
@@ -60,7 +62,6 @@
                         <td align="center" valign="middle">
                             <!-- atualizar -->
                             <a href="/Admin/Ads/UpdateAds/@item.ID">
-                                <br />
                                 <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/refresh-icon.png" />
                             </a>
                         </td>
@@ -68,8 +69,7 @@
                         <td align="center" valign="middle">
                             <!-- remover -->
                             <a href="#">
-                                <br />
-                                <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
+                                <img onclick="AskQuestion('/Admin/Ads/DeleteAds/', @item.ID)" style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
                             </a>
                         </td>
                     </tr>

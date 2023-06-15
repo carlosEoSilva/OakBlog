@@ -8,22 +8,24 @@ using System.Web.Mvc;
 
 namespace UI.Areas.Admin.Controllers
 {
-    public class VideoController : Controller
+    public class VideoController : BaseController
     {
         VideoBLL bll = new VideoBLL();
         
-        public ActionResult AddVideo()
-        {
-            VideoDTO dto = new VideoDTO();
-
-            return View(dto);
-        }
+        
 
         public ActionResult VideoList()
         {
             List<VideoDTO> dtolist = new List<VideoDTO>();
             dtolist = bll.GetVideos();
             return View(dtolist);
+        }
+
+        public ActionResult AddVideo()
+        {
+            VideoDTO dto = new VideoDTO();
+
+            return View(dto);
         }
 
         [HttpPost]
@@ -40,6 +42,7 @@ namespace UI.Areas.Admin.Controllers
                 if (bll.AddVideo(model))
                 {
                     ViewBag.ProcessState = General.Messages.AddSuccess;
+                    ModelState.Clear();
                     model = new VideoDTO();
                 }
                 else
@@ -52,7 +55,7 @@ namespace UI.Areas.Admin.Controllers
                 ViewBag.ProcessState = General.Messages.EmptyArea;
             }
 
-            return View();
+            return View(model);
         }
 
         public ActionResult UpdateVideo(int ID)
@@ -89,6 +92,10 @@ namespace UI.Areas.Admin.Controllers
             return View(model);
         }
 
-
+        public JsonResult DeleteVideo(int ID)
+        {
+            bll.DeleteVideo(ID);
+            return Json("");
+        }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using DTO;
 using System;
 using System.Collections.Generic;
+using System.Data.Objects.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace DAL
 {
@@ -43,6 +45,45 @@ namespace DAL
             }
 
             return dtolist;
+        }
+
+        public static IEnumerable<SelectListItem> GetCategoriesForDropdown()
+        {
+            IEnumerable<SelectListItem> categoryList = db.Categories.Where(x => x.isDeleted == false)
+                .OrderByDescending(x => x.AddDate)
+                .Select(x => new SelectListItem()
+                {
+                    Text = x.CategoryName,
+                    Value = SqlFunctions.StringConvert((double)x.ID)
+                })
+                .ToList();
+
+            return categoryList;
+        }
+
+        public List<Post> DeleteCategory(int ID)
+        {
+            try
+            {
+                Category ct = db.Categories.First(x => x.ID == ID);
+
+                ct.isDeleted = true;
+                ct.DeletedDate = DateTime.Now;
+                ct.LastUpdateDate = DateTime.Now;
+                ct.LastUpdateUserID = UserStatic.UserID;
+
+                db.SaveChanges();
+
+                List<Post> postlist = db.Posts
+                    .Where(x => x.isDeleted == false && x.CategoryID == ID)
+                    .ToList();
+
+                return postlist;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void UpdateCategory(CategoryDTO model)

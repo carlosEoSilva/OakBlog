@@ -47,5 +47,12 @@ namespace BLL
             LogDAO.AddLog(General.ProcessType.UserUpdate, General.TableName.User, model.ID);
             return oldImagePath;
         }
+
+        public string DeleteUser(int ID)
+        {
+            string imagepath = userdao.DeleteUser(ID);
+            LogDAO.AddLog(General.ProcessType.UserDelete, General.TableName.User, ID);
+            return imagepath;
+        }
     }
 }

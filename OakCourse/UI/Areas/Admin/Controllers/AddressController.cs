@@ -8,21 +8,21 @@ using System.Web.Mvc;
 
 namespace UI.Areas.Admin.Controllers
 {
-    public class AddressController : Controller
+    public class AddressController : BaseController
     {
         AddressBLL bll = new AddressBLL();
-
-        public ActionResult AddAddress()
-        {
-            AddressDTO dto = new AddressDTO();
-            return View(dto);
-        }
 
         public ActionResult AddressList()
         {
             List<AddressDTO> list = new List<AddressDTO>();
             list = bll.GetAddresses();
             return View(list);
+        }
+
+        public ActionResult AddAddress()
+        {
+            AddressDTO dto = new AddressDTO();
+            return View(dto);
         }
 
 
@@ -76,5 +76,13 @@ namespace UI.Areas.Admin.Controllers
             }
             return View(model);
         }
+    
+        //note-13
+        public JsonResult DeleteAddress(int ID)
+        {
+            bll.DeleteAddress(ID);
+            return Json("");
+        }
+    
     }
 }

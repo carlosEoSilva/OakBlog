@@ -1,0 +1,127 @@
+﻿@model DTO.PostDTO
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
+
+<div class="box-body">
+    <input type="number" name="ID" value="@Model.ID" hidden />
+
+    <div class="form-group">
+        <label>Category</label>
+        @Html.DropDownList("CategoryID", Model.Categories, "Select Category", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.CategoryID)
+    </div>
+
+    <div class="form-group">
+        <label>Title</label>
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Title" })
+        @Html.ValidationMessageFor(x => x.Title)
+    </div>
+
+    <div class="form-group">
+        <label>Short Content</label>
+        @Html.TextBoxFor(x => x.ShortContent, new { @class = "form-control", @placeholder = "Short Content" })
+        @Html.ValidationMessageFor(x => x.ShortContent)
+    </div>
+
+    <div class="form-group">
+        <label>Post Content</label>
+        <br />
+        @Html.TextAreaFor(x => x.PostContent, new { @id = "ckeditor" })
+        @Html.ValidationMessageFor(x => x.PostContent)
+    </div>
+
+    <div class="form-group">
+        <label>Post Image</label>
+        <br />
+        <input type="file" name="PostImage" accept="image/gif, image/jpg, image/jpeg, image/png" multiple onchange="$('#PostImage')[0].src=window.URL.createObjectURL(this.files[0])" />
+        <br />
+        <img id="PostImage" width="250" height="150" />
+    </div>
+
+    <div class="form-group">
+        <label>Tags</label>
+        @Html.TextBoxFor(x => x.TagText, new { @class = "form-control", @placeholder = "Please use ',' for separate tags" })
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-inline" type="checkbox" name="Slider" value="true" checked="@Model.Slider" />
+        <label class="form-check-label">Slider</label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-inline" type="checkbox" name="Area1" value="true" checked="@Model.Area1" />
+        <label class="form-check-label">Area1</label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-inline" type="checkbox" name="Area2" value="true" checked="@Model.Area2" />
+        <label class="form-check-label">Area2</label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-inline" type="checkbox" name="Area3" value="true" checked="@Model.Area3" />
+        <label class="form-check-label">Area3</label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-inline" type="checkbox" name="Notification" value="true" checked="@Model.Notification" />
+        <label class="form-check-label">Notification</label>
+    </div>
+
+    <div class="form-group">
+        <label>Language</label>
+        @Html.TextBoxFor(x => x.Language, new { @class = "form-control", @placeholder = "Language" })
+    </div>
+
+    @if (Model.isUpdate)
+    {
+
+        <div class="card-body">
+            <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                     <th>Image</th>
+                     <th>Delete</th>
+                    </tr>
+                </thead>
+        <tbody>
+            @foreach (var item in Model.PostImages)
+            {
+                    <tr id="a_@item.ID">
+                        
+                        <td>
+                            <img src="~/Areas/Admin/Content/PostImage/@item.ImagePath" width="70" height="50"/>
+                        </td>
+    
+                        <td align="center" valign="middle">
+                            <a href="#">
+                                <img onclick="AskQuestion('/Admin/Post/DeletePostImage/', @item.ID)" src="~/Areas/Admin/Content/icons/delete-icon.png" alt="Delete" width="30" height="30"/>
+                            </a>
+                        </td>
+                    </tr>
+            }
+            </tbody>
+    
+            <tfoot>
+                <tr>
+                    <th>Image</th>
+                    <th>Delete</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+     }
+
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#ckeditor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+</div>

@@ -18,7 +18,7 @@
 <br />
 
 <div class="card-footer">
-    <button type="submit" class="btn btn-primary" href="/Admin/Meta/AddMeta">Add Meta</button>
+    <button type="submit" class="btn btn-primary" onclick="window.location.href='/Admin/Meta/AddMeta'">Add Meta</button>
 </div>
 
 <div class="card">
@@ -50,7 +50,6 @@
                         <td align="center" valign="middle">
                             <!-- atualizar -->
                             <a href="/Admin/Meta/UpdateMeta/@item.MetaID">
-                                <br />
                                 <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/refresh-icon.png"/>
                             </a>
                         </td>
@@ -58,8 +57,7 @@
                         <td align="center" valign="middle">
                             <!-- remover -->
                             <a href="#">
-                                <br />
-                                <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
+                                <img onclick="AskQuestion('/Admin/Meta/DeleteMeta/', @item.MetaID)" style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
                             </a>
                         </td>
                     </tr>
@@ -78,4 +76,5 @@
             </tfoot>
         </table>
     </div>
+    @Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")
 </div>

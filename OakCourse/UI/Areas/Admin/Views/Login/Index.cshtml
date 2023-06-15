@@ -3,7 +3,7 @@
     Layout = null;
 }
 
-@* 9 *@
+@* note-9 *@
 @model DTO.UserDTO
 
 
@@ -34,6 +34,9 @@
 </head>
 
 <body class="hold-transition login-page">
+
+    <p>user = password = admin</p>
+
     <div class="login-box">
         <div class="login-logo">
             <a href="../../index2.html"><b>Admin</b></a>
@@ -44,10 +47,10 @@
                 <p class="login-box-msg">Sign in to start your session</p>
 
                 <form method="post">
-                    @*12*@
+                    @*note-12*@
                     @Html.ValidationMessageFor(x => x.Username)
                     <div class="input-group mb-3">
-                        @*10*@
+                        @*note-10*@
                         <input type="text" class="form-control" placeholder="Username" name="Username">
                     </div>
                     

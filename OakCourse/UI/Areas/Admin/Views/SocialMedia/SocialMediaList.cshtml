@@ -6,6 +6,8 @@
 
 @model List<DTO.SocialMediaDTO>
 
+@Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")
+
 <section class="content-header">
     <h1>Social Media List</h1>
     <ol class="breadcrumb float-sm-left">
@@ -53,13 +55,12 @@
                         </td>
 
                         <td>
-                            <img src="~/Areas/Admin/Content/SocialMediaImages/@item.ImagePath" width="40" height="40"/>
+                            <img src="~/Areas/Admin/Content/SocialMediaImages/@item.ImagePath" width="45" height="45" />
                         </td>
 
                         <td align="center" valign="middle">
                             <!-- atualizar -->
                             <a href="/Admin/SocialMedia/UpdateSocialMedia/@item.ID">
-                                <br />
                                 <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/refresh-icon.png" />
                             </a>
                         </td>
@@ -67,8 +68,7 @@
                         <td align="center" valign="middle">
                             <!-- remover -->
                             <a href="#">
-                                <br />
-                                <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
+                                <img onclick="AskQuestion('/Admin/SocialMedia/DeleteSocialMedia/', @item.ID)"  style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
                             </a>
                         </td>
                     </tr>

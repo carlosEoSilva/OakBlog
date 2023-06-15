@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace UI.Areas.Admin.Controllers
 {
-    public class SocialMediaController : Controller
+    public class SocialMediaController : BaseController
     {
         SocialMediaBLL bll = new SocialMediaBLL();
         
@@ -94,6 +94,8 @@ namespace UI.Areas.Admin.Controllers
                         }
                 }
                 string oldImagePath = bll.UpadateSocialMedia(model);
+                
+                //apagar a imagem antiga
                 if(model.SocialImage != null)
                 {
                     if (System.IO.File.Exists(Server.MapPath("~/Areas/Admin/Content/SocialMediaImages/" + oldImagePath)))
@@ -105,5 +107,20 @@ namespace UI.Areas.Admin.Controllers
             }
             return View(model);
         }
+    
+        public JsonResult DeleteSocialMedia(int ID)
+        {
+            string imagepath= bll.DeleteSocialMedia(ID);
+            
+            //apagar a imagem antiga
+            if (System.IO.File.Exists(Server.MapPath("~/Areas/Admin/Content/SocialMediaImages/" + imagepath)))
+            {
+                System.IO.File.Delete(Server.MapPath("~/Areas/Admin/Content/SocialMediaImages/" + imagepath));
+            }
+            
+            return Json("");
+        }
+    
+    
     }
 }

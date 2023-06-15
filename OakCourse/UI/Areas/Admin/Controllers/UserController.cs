@@ -10,16 +10,9 @@ using System.Web.Mvc;
 
 namespace UI.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         UserBLL bll = new UserBLL();
-
-        public ActionResult AddUser()
-        {
-            //este método é apenas para renderizar a tela de cadastro com um model vazio.
-            UserDTO model = new UserDTO();
-            return View(model);
-        }
 
         public ActionResult UserList()
         {
@@ -28,11 +21,11 @@ namespace UI.Areas.Admin.Controllers
             return View(model);
         }
 
-        public ActionResult UpdateUser(int ID)
+        public ActionResult AddUser()
         {
-            UserDTO dto = new UserDTO();
-            dto = bll.GetUserWithID(ID);
-            return View(dto);
+            //este método é apenas para renderizar a tela de cadastro com um model vazio.
+            UserDTO model = new UserDTO();
+            return View(model);
         }
 
         [HttpPost]
@@ -67,6 +60,13 @@ namespace UI.Areas.Admin.Controllers
                 ViewBag.ProcessState = General.Messages.EmptyArea;
             }
             return View(model);
+        }
+
+        public ActionResult UpdateUser(int ID)
+        {
+            UserDTO dto = new UserDTO();
+            dto = bll.GetUserWithID(ID);
+            return View(dto);
         }
 
         [HttpPost]
@@ -107,6 +107,17 @@ namespace UI.Areas.Admin.Controllers
                 }
             }
             return View(model);
+        }
+
+        public JsonResult DeleteUser(int ID)
+        {
+            string imagepath = bll.DeleteUser(ID);
+
+            if (System.IO.File.Exists(Server.MapPath("~/Areas/Admin/Content/UserImage/" + imagepath)))
+            {
+                System.IO.File.Delete(Server.MapPath("~/Areas/Admin/Content/UserImage/" + imagepath));
+            }
+            return Json("");
         }
     }
 }

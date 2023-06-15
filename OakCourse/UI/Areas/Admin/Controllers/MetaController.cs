@@ -5,7 +5,7 @@ using DTO;
 
 namespace UI.Areas.Admin.Controllers
 {
-    public class MetaController : Controller
+    public class MetaController : BaseController
     {
         // GET: Admin/Meta
         public ActionResult Index()
@@ -83,6 +83,12 @@ namespace UI.Areas.Admin.Controllers
                 ViewBag.ProcessState = General.Messages.EmptyArea;
             }
             return View(model);
+        }
+
+        public JsonResult DeleteMeta(int ID)
+        {
+            bll.DeleteMeta(ID);
+            return Json("");
         }
     }
 }

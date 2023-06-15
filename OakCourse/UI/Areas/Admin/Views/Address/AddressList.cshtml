@@ -6,6 +6,8 @@
 
 @model List<DTO.AddressDTO>
 
+@Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")
+
 <section class="content-header">
     <h1>Addresses List</h1>
     <ol class="breadcrumb float-sm-left">
@@ -18,7 +20,7 @@
 <br />
 
 <div class="card-footer">
-    <button class="btn btn-primary" onclick="window.location.href='/Admin/Address/Addresses'">Add Address</button>
+    <button class="btn btn-primary" onclick="window.location.href='/Admin/Address/AddAddress'">Add Address</button>
 </div>
 
 <div class="card">
@@ -54,7 +56,6 @@
                         <td align="center" valign="middle">
                             <!-- atualizar -->
                             <a href="/Admin/Address/UpdateAddress/@item.ID">
-                                <br />
                                 <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/refresh-icon.png" />
                             </a>
                         </td>
@@ -62,8 +63,7 @@
                         <td align="center" valign="middle">
                             <!-- remover -->
                             <a href="#">
-                                <br />
-                                <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
+                                <img onclick="AskQuestion('/Admin/Address/DeleteAddress/', @item.ID)" style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
                             </a>
                         </td>
                     </tr>
@@ -82,4 +82,8 @@
         </table>
     </div>
 </div>
+
+
+
+
 

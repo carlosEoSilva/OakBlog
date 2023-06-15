@@ -30,7 +30,8 @@ namespace DAL
         public List<AddressDTO> GetAdresses()
         {
             List<Address> list = db.Addresses.Where(x => x.isDeleted == false)
-                .OrderBy(x => x.AddDate).ToList();
+                .OrderBy(x => x.AddDate)
+                .ToList();
 
             List<AddressDTO> dtolist = new List<AddressDTO>();
 
@@ -52,6 +53,25 @@ namespace DAL
             }
 
             return dtolist;
+        }
+
+        public void DeleteAdress(int ID)
+        {
+            try
+            {
+                Address ads = db.Addresses.First(x => x.ID == ID);
+
+                ads.isDeleted = true;
+                ads.DeletedDate = DateTime.Now;
+                ads.LastUpdateDate = DateTime.Now;
+                ads.LastUpdateUserID = UserStatic.UserID;
+                
+                db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public void AddAddress(AddressDTO model)

@@ -15,10 +15,12 @@ namespace DAL
             var modelNameByte = Encoding.UTF7.GetBytes(model.Username);
             var modelPasswordByte = Encoding.UTF7.GetBytes(model.Password);
 
-            //-11
+            //note-11
             T_User user = db.T_User
-                .FirstOrDefault(x => x.Username.Equals(modelNameByte) && 
-                    x.Password.Equals(modelPasswordByte));
+                .FirstOrDefault(x => 
+                    x.Username.Equals(modelNameByte) && 
+                    x.Password.Equals(modelPasswordByte) && 
+                    x.isDeleted == false);
 
 
             if(user != null && user.ID != 0)
@@ -67,6 +69,26 @@ namespace DAL
             }
 
             return userlist;
+        }
+
+        public string DeleteUser(int ID)
+        {
+            try
+            {
+                T_User user = db.T_User.First(x => x.ID == ID);
+
+                user.isDeleted = true;
+                user.DeletedDate = DateTime.Now;
+                user.LastUpdateDate = DateTime.Now;
+                user.LastUpdateUserID = UserStatic.UserID;
+
+                db.SaveChanges();
+                return user.ImagePath;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public string UpdateUser(UserDTO model)

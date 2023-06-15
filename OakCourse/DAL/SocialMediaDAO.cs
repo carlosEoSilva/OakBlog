@@ -54,6 +54,20 @@ namespace DAL
             return dto;
         }
 
+        public string DeleteSocialMedia(int ID)
+        {
+            SocialMedia social = db.SocialMedias.First(x => x.ID == ID);
+            string imagepath = social.ImagePath;
+
+            social.isDeleted = true;
+            social.DeletedDate = DateTime.Now;
+            social.LastUpdateDate = DateTime.Now;
+            social.LastUpdateUserID = UserStatic.UserID;
+
+            db.SaveChanges();
+            return imagepath;
+        }
+
         public string UpdateSocialMedia(SocialMediaDTO model)
         {
             try

@@ -2,9 +2,7 @@
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace BLL
 {
@@ -29,9 +27,9 @@ namespace BLL
             return true;
         }
 
-        public static IEnumerable<System.Web.Mvc.SelectListItem> GetCategoriesForDropdown()
+        public static IEnumerable<SelectListItem> GetCategoriesForDropdown()
         {
-            throw new NotImplementedException();
+            return CategoryDAO.GetCategoriesForDropdown();
         }
 
         public List<CategoryDTO> GetCategories()
@@ -50,6 +48,27 @@ namespace BLL
             LogDAO.AddLog(General.ProcessType.CategoryUpdate, General.TableName.Category, model.ID);
             return true;
 
+        }
+
+        PostBLL postbll = new PostBLL();
+        public List<PostImageDTO> DeleteCategory(int ID)
+        {
+            List<Post> postlist = dao.DeleteCategory(ID);
+            LogDAO.AddLog(General.ProcessType.CategoryDelete, General.TableName.Category, ID);
+            List<PostImageDTO> imagelist = new List<PostImageDTO>();
+
+            foreach(var item in postlist)
+            {
+                List<PostImageDTO> imagelist2 = postbll.DeletePost(item.ID);
+                LogDAO.AddLog(General.ProcessType.PostDelete, General.TableName.post, item.ID);
+
+                foreach(var item2 in imagelist2)
+                {
+                    imagelist.Add(item2);
+                }
+            }
+
+            return imagelist;
         }
     }
 }

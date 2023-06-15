@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Mvc;
 
 namespace DTO
@@ -21,13 +22,16 @@ namespace DTO
         [Required(ErrorMessage = "Please fill the Post Content area")]
         public string PostContent { get; set; }
 
+        public string CategoryName { get; set; }
+
         public int CategoryID { get; set; }
 
-        [Required(ErrorMessage = "Please fill the Category area")]
         public IEnumerable<SelectListItem> Categories { get; set; }
-
+        
+        public List<PostImageDTO> PostImages { get; set; }
+        
         [Required(ErrorMessage = "Please fill the Post Image area")]
-        public List<PostImageDTO> PostImage { get; set; }
+        public List<HttpPostedFileBase> PostImage { get; set; }
 
         public List<TagDTO> TagList { get; set; }
 
@@ -48,5 +52,9 @@ namespace DTO
         public bool Notification { get; set; }
 
         public string Language { get; set; }
+
+        public DateTime AddDate { get; set; }
+
+        public bool isUpdate { get; set; } = false;
     }
 }

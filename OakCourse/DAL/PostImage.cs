@@ -17,11 +17,11 @@ namespace DAL
         public int ID { get; set; }
         public int PostID { get; set; }
         public string ImagePath { get; set; }
-        public System.DateTime AddDate { get; set; }
+        public DateTime AddDate { get; set; }
         public bool isDeleted { get; set; }
-        public System.DateTime DeletedDate { get; set; }
+        public DateTime DeletedDate { get; set; } = DateTime.Now;
         public Nullable<int> LastUpdateUserID { get; set; }
-        public System.DateTime LastUpdateDate { get; set; }
+        public DateTime LastUpdateDate { get; set; }
     
         public virtual Post Post { get; set; }
         public virtual T_User T_User { get; set; }
