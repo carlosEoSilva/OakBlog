@@ -115,6 +115,23 @@
     <Content Include="Areas\Admin\Content\tempimage\logo.jpg" />
     <Content Include="Areas\Admin\Content\tempimage\user3-128x128.jpg" />
     <Content Include="Areas\Admin\Views\User\AddUser.cshtml" />
+    <Content Include="Content\css\animate.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\classy-nav.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\magnific-popup.css" />
+    <Content Include="Content\css\nice-select.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
+    <Content Include="Content\css\themify-icons.css" />
+    <Content Include="Content\fonts\classy.svg" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\themify.svg" />
+    <Content Include="Content\js\active.js" />
+    <Content Include="Content\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Content\js\bootstrap\popper.min.js" />
+    <Content Include="Content\js\jquery\jquery-2.2.4.min.js" />
+    <Content Include="Content\js\plugins\plugins.js" />
+    <Content Include="Content\style.css" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -133,6 +150,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\VideoController.cs" />
     <Compile Include="Areas\Admin\Models\Attributes\LoginControl.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,7 +198,20 @@
     <Content Include="Areas\Admin\Views\Post\UpdatePost.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\ModalMessage.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\InputImages.cshtml" />
+    <Content Include="Content\fonts\classy.eot" />
+    <Content Include="Content\fonts\classy.ttf" />
+    <Content Include="Content\fonts\classy.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
+    <Content Include="Content\fonts\themify.eot" />
+    <Content Include="Content\fonts\themify.ttf" />
+    <Content Include="Content\fonts\themify.woff" />
     <None Include="packages.config" />
+    <Content Include="Views\Shared\HomeLayout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -197,7 +228,6 @@
     <Folder Include="Areas\Admin\Content\UserImage\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

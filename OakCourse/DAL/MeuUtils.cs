@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-    public static class MyUtils
+    public static class MeuUtils
     {
             public static string ByteParaString(byte[] byteArr)
             {

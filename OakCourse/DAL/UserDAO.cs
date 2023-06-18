@@ -99,15 +99,15 @@ namespace DAL
                 string oldImagePath = user.ImagePath;
                 
                 user.NameSurname = model.Name;
-                user.Username = MyUtils.StringParaByte(model.Username);
+                user.Username = MeuUtils.StringParaByte(model.Username);
 
                 if(model.ImagePath != null)
                 {
                     user.ImagePath = model.ImagePath;
                 }
 
-                user.Email = MyUtils.StringParaByte(model.Email);
-                user.Password = MyUtils.StringParaByte(model.Password);
+                user.Email = MeuUtils.StringParaByte(model.Email);
+                user.Password = MeuUtils.StringParaByte(model.Password);
                 user.LastUpdateDate = DateTime.Now;
                 user.LastUpdateUserID = UserStatic.UserID;
                 user.isAdmin = model.isAdmin;

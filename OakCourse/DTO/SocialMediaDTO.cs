@@ -13,7 +13,7 @@ namespace DTO
         public string ImagePath { get; set; }
 
         [Required(ErrorMessage = "Please fill link area!")]
-        public string Link { get; set; }
+        public string Link { get; set; } = "https://pt-br.facebook.com";
 
         public HttpPostedFileBase SocialImage { get; set; }
     }
