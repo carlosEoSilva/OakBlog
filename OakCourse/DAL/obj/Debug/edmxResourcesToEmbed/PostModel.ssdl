@@ -85,13 +85,14 @@
 warning 6002: The table/view 'POSTDATA.dbo.FavLogoTitle' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="FavLogoTitle">
     <Key>
+      <PropertyRef Name="LastUpdateUserID" />
       <PropertyRef Name="ID" />
       <PropertyRef Name="Title" />
       <PropertyRef Name="Fav" />
       <PropertyRef Name="Logo" />
       <PropertyRef Name="AddDate" />
       <PropertyRef Name="isDeleted" />
-      <PropertyRef Name="LastUpdateUserID" />
+      <PropertyRef Name="DeletedDate" />
       <PropertyRef Name="LastUpdateDate" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -100,7 +101,7 @@ warning 6002: The table/view 'POSTDATA.dbo.FavLogoTitle' does not have a primary
     <Property Name="Logo" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="AddDate" Type="datetime" Nullable="false" />
     <Property Name="isDeleted" Type="bit" Nullable="false" />
-    <Property Name="DeletedDate" Type="datetime" />
+    <Property Name="DeletedDate" Type="datetime" Nullable="false" />
     <Property Name="LastUpdateUserID" Type="int" Nullable="false" />
     <Property Name="LastUpdateDate" Type="datetime" Nullable="false" />
   </EntityType>

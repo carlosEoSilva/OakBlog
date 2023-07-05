@@ -6,6 +6,11 @@
     var layoutdto = (HomeLayoutDTO)ViewData["LayoutDTO"];
     List<CategoryDTO> categories = layoutdto.Categories;
     FavDTO favdto = layoutdto.FavDTO;
+    List<MetaDTO> metalist = layoutdto.Metalist;
+    AddressDTO address = layoutdto.Address;
+    List<PostDTO> hotnews = layoutdto.HotNews;
+    //FavDTO favdto = layoutdto.FavDTO; -- está gerando erro
+
 }
 
 <head>
@@ -13,12 +18,16 @@
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    @foreach (var item in metalist)
+    {
+    <meta name="@item.Name" content="@item.MetaContent">
+    }
+
     <!-- Title -->
     <title>Vizew - Blog &amp; Magazine HTML Template</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="~/Areas/Admin/Content/FavImage/@favdto.Fav">
+    <link rel="icon" href="~/Areas/Admin/Content/FavImage/logo.jpg">
 
     <!-- Stylesheet -->
     <link href="~/Content/style.css" rel="stylesheet" />
@@ -49,9 +58,12 @@
                             </div>
                             <div id="breakingNewsTicker" class="ticker">
                                 <ul>
-                                    <li><a href="single-post.html">10 Things Amazon Echo Can Do</a></li>
-                                    <li><a href="single-post.html">Welcome to Colorlib Family.</a></li>
-                                    <li><a href="single-post.html">Boys 'doing well' after Thai</a></li>
+                                    @foreach(var item in hotnews)
+                                    {
+                                     <li>
+                                        <a href="@Url.RouteUrl("PostDetail", new { @ID=item.ID, @CategoryName=BLL.SeoLink.GenerateUrl(item.CategoryName), @SeoLink=item.SeoLink})">@item.Title</a>
+                                     </li>                                    
+                                    }
                                 </ul>
                             </div>
                         </div>
@@ -73,7 +85,7 @@
                                 </form>
                             </div>
                             <!-- Login -->
-                            <a href="login.html" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
+                            <a href="/Admin/Login/Index" class="login-btn"><i class="fa fa-user" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -89,7 +101,7 @@
                     <nav class="classy-navbar justify-content-between" id="vizewNav">
 
                         <!-- Nav brand -->
-                        <a href="index.html" class="nav-brand"><img src="~/Areas/Admin/Content/FavImage/@favdto.Logo" alt=""></a>
+                        <a href="@Url.RouteUrl("Home")" class="nav-brand"><img src="~/Areas/Admin/Content/FavImage/logo.jpg" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -108,10 +120,12 @@
                                 <ul>
                                     @foreach (var item in categories)
                                     {
-                                        <li class="active"><a href="">@item.CategoryName</a></li>
+                                        <li class="active">
+                                            <a href="@Url.RouteUrl("Category", new { @CategoryName=BLL.SeoLink.GenerateUrl(item.CategoryName)})">@item.CategoryName</a>
+                                        </li>
                                     }
 
-                                    <li><a href="">Videos</a></li>
+                                    <li><a href="@Url.RouteUrl("Category", new { @CategoryName="video"})">Videos</a></li>
                                     <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </div>
@@ -134,7 +148,7 @@
                 <div class="col-12 col-sm-6 col-xl-3">
                     <div class="footer-widget mb-70">
                         <!-- Logo -->
-                        <a href="index.html" class="foo-logo d-block mb-4"><img src="~/Areas/Admin/Content/FavImage/@favdto.Logo" alt=""></a>
+                        <a href="@Url.RouteUrl("Home")" class="foo-logo d-block mb-4"><img src="~/Areas/Admin/Content/FavImage/logo.jpg" alt=""></a>
                     </div>
                 </div>
 
@@ -147,12 +161,12 @@
                                 @foreach (var item in categories)
                                 {
                                     <div class="single-twit">
-                                        <a href=""><p><i class="fa fa-star"></i>@item.CategoryName</p></a>
+                                        <a href="@Url.RouteUrl("Category", new { @CategoryName=BLL.SeoLink.GenerateUrl(item.CategoryName)})"><p><i class="fa fa-star"></i>@item.CategoryName</p></a>
                                     </div>
                                 }
 
                                 <div class="single-twit">
-                                    <a href="#"><p><i class="fa fa-star"></i>Videos</p></a>
+                                    <a href="@Url.RouteUrl("Category", new { @CategoryName="video"})"><p><i class="fa fa-star"></i>Videos</p></a>
                                 </div>
 
                                 <div class="single-twit">
@@ -166,50 +180,13 @@
                 <!-- Footer Widget Area -->
                 <div class="col-12 col-sm-6 col-xl-3">
                     <div class="footer-widget mb-70">
-                        <h6 class="widget-title">Sport Videos</h6>
-
-                        <!-- Single Blog Post -->
-                        <div class="single-blog-post d-flex">
-                            <div class="post-thumbnail">
-                                <img src="img/bg-img/1.jpg" alt="">
-                            </div>
-                            <div class="post-content">
-                                <a href="single-post.html" class="post-title">DC Shoes: gymkhana the</a>
-                                <div class="post-meta d-flex justify-content-between">
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Blog Post -->
-                        <div class="single-blog-post d-flex">
-                            <div class="post-thumbnail">
-                                <img src="img/bg-img/2.jpg" alt="">
-                            </div>
-                            <div class="post-content">
-                                <a href="single-post.html" class="post-title">Sweet Yummy Chocolatea Tea</a>
-                                <div class="post-meta d-flex justify-content-between">
-                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 14</a>
-                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 34</a>
-                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 84</a>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Footer Widget Area -->
-                <div class="col-12 col-sm-6 col-xl-3">
-                    <div class="footer-widget mb-70">
                         <h6 class="widget-title">Our Address</h6>
                         <!-- Contact Address -->
                         <div class="contact-address">
-                            <p>101 E 129th St, East Chicago, <br>IN 46312, US</p>
-                            <p>Phone: 001-1234-88888</p>
-                            <p>Email: info.colorlib@gmail.com</p>
+                            <p>@address.AddressContent</p>
+                            <p>@address.Phone</p>
+                            <p>@address.Email</p>
+                            <p>@address.Fax</p>
                         </div>
                         <!-- Footer Social Area -->
                         <div class="footer-social-area">
@@ -218,6 +195,13 @@
                             <a href="@layoutdto.Linkedin.Link" target="blank"><i class="fa fa-linkedin"></i></a>
                             <a href="@layoutdto.Youtube.Link" target="blank"><i class="fa fa-youtube-play"></i></a>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Footer Widget Area -->
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="footer-widget mb-70">
+                        @Html.Raw(address.SmallMapPath)
                     </div>
                 </div>
             </div>

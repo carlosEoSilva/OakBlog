@@ -17,11 +17,13 @@ namespace DAL
         public int ID { get; set; }
         public int PostID { get; set; }
         public string ImagePath { get; set; }
-        public DateTime AddDate { get; set; }
+        public System.DateTime AddDate { get; set; }
         public bool isDeleted { get; set; }
-        public DateTime DeletedDate { get; set; } = DateTime.Now;
+
+        //foi necessário usar um valor padrão porque o banco está configurado para NOT NULL
+        public System.DateTime DeletedDate { get; set; } = new DateTime(1800, 01, 01);
         public Nullable<int> LastUpdateUserID { get; set; }
-        public DateTime LastUpdateDate { get; set; }
+        public System.DateTime LastUpdateDate { get; set; }
     
         public virtual Post Post { get; set; }
         public virtual T_User T_User { get; set; }

@@ -133,7 +133,7 @@ namespace UI.Areas.Admin.Controllers
                         string filename = "";
                         string uniqueNumber = Guid.NewGuid().ToString();
                         filename = uniqueNumber + postedfile.FileName;
-                        resizeimage.Save(Server.MapPath("~/Areas/Admin/Content/PostImage" + filename));
+                        resizeimage.Save(Server.MapPath("~/Areas/Admin/Content/PostImage/" + filename));
                         PostImageDTO dto = new PostImageDTO();
                         dto.ImagePath = filename;
                         imagelist.Add(dto);

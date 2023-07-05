@@ -39,9 +39,8 @@ namespace DAL
         public int AddUserID { get; set; }
         public bool isDeleted { get; set; }
         public Nullable<System.DateTime> DeletedDate { get; set; }
-        public int LasUpdateUserID { get; set; }//precisa manter o nome como 'Las' porque no banco também está assim
+        public int LasUpdateUserID { get; set; }
         public System.DateTime LastUpdateDate { get; set; }
-    
         public virtual Category Category { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual T_User T_User { get; set; }

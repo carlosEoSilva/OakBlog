@@ -73,6 +73,36 @@ namespace DAL
             return dtolist;
         }
 
+        public List<PostDTO> GetHotNews()
+        {
+            var postlist = (from post in db.Posts.Where(x => x.isDeleted == false && x.Area1 == true)
+                            join category in db.Categories on post.CategoryID equals category.ID
+                            select new
+                            {
+                                ID = post.ID,
+                                Title = post.Title,
+                                categoryname = category.CategoryName,
+                                seolink= post.SeoLink,
+                                AddDate = post.AddDate
+                            }).OrderByDescending(x => x.AddDate).Take(8).ToList();
+
+            List<PostDTO> dtolist = new List<PostDTO>();
+
+            foreach (var item in postlist)
+            {
+                PostDTO dto = new PostDTO
+                {
+                    Title = item.Title,
+                    ID = item.ID,
+                    CategoryName = item.categoryname,
+                    AddDate = item.AddDate
+                };
+
+                dtolist.Add(dto);
+            }
+            return dtolist;
+        }
+
         public PostDTO GetPostWithID(int ID)
         {
             Post post = db.Posts.First(x => x.ID == ID);
@@ -134,13 +164,16 @@ namespace DAL
             post.Area3= model.Area3;
             post.CategoryID= model.CategoryID;
             post.LanguageName= model.Language;
-            post.LastUpdateDate= DateTime.Now.Date;
+            post.LastUpdateDate= DateTime.Now;
             post.LasUpdateUserID= UserStatic.UserID;
             post.Notification= model.Notification;
             post.PostContent= model.PostContent;
             post.SeoLink= model.SeoLink;
             post.ShortContent= model.ShortContent;
             post.Slider= model.Slider;
+
+            post.T_User.AddDate = DateTime.Now.Date;
+            post.T_User1.AddDate = DateTime.Now.Date;
 
             db.SaveChanges();
         }
@@ -206,8 +239,8 @@ namespace DAL
             foreach(var item in list)
             {
                 item.isDeleted = true;
-                item.DeletedDate = DateTime.Now.Date;
-                item.LastUpdateDate = DateTime.Now.Date;
+                item.DeletedDate = DateTime.Now;
+                item.LastUpdateDate = DateTime.Now;
                 item.LastUpdateUserID = UserStatic.UserID;
             }
 

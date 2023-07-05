@@ -111,12 +111,18 @@ namespace BLL
             dto.PostImages = dao.GetPostImagesWithPostID(ID);
             List<PostTag> taglist = dao.GetPostTagsWithPostID(ID);
             string tagValue = "";
-            
-            foreach(var item in taglist)
+
+            if(taglist.Count > 0)
             {
-                tagValue = item.TagContent;
-                tagValue += ",";
+                foreach (var item in taglist)
+                {
+                    tagValue += item.TagContent + ",";
+                }
+
+                //remover a última vírgula
+                tagValue = tagValue.Remove(tagValue.Length - 1, 1);
             }
+            
             dto.TagText = tagValue;
             return dto;
         }

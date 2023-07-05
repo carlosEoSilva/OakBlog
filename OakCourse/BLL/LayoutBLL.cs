@@ -13,6 +13,9 @@ namespace BLL
         CategoryDAO categorydao = new CategoryDAO();
         SocialMediaDAO socialdao = new SocialMediaDAO();
         FavDAO favdao = new FavDAO();
+        MetaDAO metadao = new MetaDAO();
+        AddressDAO addressdao = new AddressDAO();
+        PostDAO postdao = new PostDAO();
 
         public HomeLayoutDTO GetLayoutData()
         {
@@ -21,12 +24,14 @@ namespace BLL
 
             dto.Categories = categorydao.GetCategories();
             socialmedialist = socialdao.GetSocialMedias();
-
             dto = FillSocialMedia(dto, socialmedialist);
+            dto.Metalist = metadao.GetMetaData();
+            List<AddressDTO> addresslist = addressdao.GetAdresses();
+            dto.Address = addresslist.First();
+            dto.HotNews = postdao.GetHotNews();
 
-            dto.FavDTO = favdao.GetFav();
-
-            
+            // o GetFav() está gerando erro
+            //dto.FavDTO = favdao.GetFav();
 
             return dto;
         }

@@ -20,7 +20,7 @@ namespace DAL
         public string Logo { get; set; }
         public System.DateTime AddDate { get; set; }
         public bool isDeleted { get; set; }
-        public Nullable<System.DateTime> DeletedDate { get; set; }
+        public System.DateTime DeletedDate { get; set; }
         public int LastUpdateUserID { get; set; }
         public System.DateTime LastUpdateDate { get; set; }
     

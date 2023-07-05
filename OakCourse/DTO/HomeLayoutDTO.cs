@@ -16,6 +16,9 @@ namespace DTO
         public SocialMediaDTO Linkedin{ get; set; }
         public SocialMediaDTO GooglePlus{ get; set; }
         public FavDTO FavDTO { get; set; }
+        public List<MetaDTO> Metalist { get; set; }
+        public AddressDTO Address { get; set; }
+        public List<PostDTO> HotNews { get; set; }
 
     }
 }

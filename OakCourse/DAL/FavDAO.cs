@@ -11,7 +11,10 @@ namespace DAL
     {
         public FavDTO GetFav()
         {
-            FavLogoTitle fav = db.FavLogoTitles.First();
+            var v = db.FavLogoTitles.Count();
+            FavLogoTitle fav = new FavLogoTitle();
+            fav = db.FavLogoTitles.FirstOrDefault(x => x.isDeleted == false);
+            //var fav = db.FavLogoTitles.First();
 
             FavDTO dto = new FavDTO
             {
