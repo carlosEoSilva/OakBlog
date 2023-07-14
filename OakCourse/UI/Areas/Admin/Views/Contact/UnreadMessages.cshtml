@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "UnreadMessages";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayout.cshtml";
+}
+
+@model List<DTO.ContactDTO>
+
+<section class="content-header">
+    <h1>Uneread Messages</h1>
+    <ol class="breadcrumb float-sm-left">
+        <li class="breadcrumb-item"><a>Admin</a></li>
+        <li class="breadcrumb-item"><a>Message</a></li>
+        <li class="breadcrumb-item active"><a>Unread Messages List</a></li>
+    </ol>
+</section>
+
+<br />
+
+<div class="card-footer">
+    <button type="submit" class="btn btn-primary" onclick="window.location.href='/Admin/Contact/AllMessages'">All Messages</button>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">DataTable with default features</h3>
+    </div>
+
+    <!-- table -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Add Date</th>
+                    <th>Read</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr id="a_@item.ID">
+
+                        <td>@item.Subject</td>
+
+                        <td>@item.Name</td>
+
+                        <td>@item.Email</td>
+
+                        <td>@item.Message</td>
+
+                        <td>@item.AddDate.ToString("dd.mm.yyyy")</td>
+
+                        <td align="center" valign="middle">
+                            <!-- atualizar -->
+                            <a href="/Admin/Contact/ReadMessage/@item.ID">
+                                <img style="width: 20px; height: 20px;" src="~/Areas/Admin/Content/icons/read.png" />
+                            </a>
+                        </td>
+
+                        <td align="center" valign="middle">
+                            <!-- remover -->
+                            <a href="#">
+                                <img onclick="AskQuestion('/Admin/Contact/DeleteMessage/', @item.ID)" style="width: 20px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            }
+
+            <tfoot>
+                <tr>
+                    <th>Subject</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Add Date</th>
+                    <th>Read</th>
+                    <th>Delete</th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>
+
+
+

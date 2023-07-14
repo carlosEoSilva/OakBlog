@@ -31,6 +31,8 @@
 
 <body class="hold-transition sidebar-mini">
 
+    @Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")
+
     @using DTO
 
     <!-- Site wrapper -->
@@ -42,26 +44,18 @@
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                <li class="nav-item">
+                    <a class="nav-link"  href="/Admin/Contact/UnreadMessages">
                         <i class="far fa-comments"></i>
-                        <span class="badge badge-danger navbar-badge">3</span>
+                        <span class="badge badge-danger navbar-badge" id="MessageCount"></span>
                     </a>
-                    
                 </li>
                 <!-- Notifications Dropdown Menu -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Admin/Comment/UnapprovedComments">
                         <i class="far fa-bell"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
+                        <span class="badge badge-warning navbar-badge" id="CommentCount"></span>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                        <span class="dropdown-item dropdown-header">15 Notifications</span>
-                        <div class="dropdown-divider"></div>
-                       
-                        <div class="dropdown-divider"></div>
-                       
-                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
@@ -340,6 +334,77 @@
                             </ul>
                         </li>
 
+                        <!-- Comments -->
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Comments
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Admin/Comment/AllComments" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All Comments</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/Admin/Comment/UnapprovedComments" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Unapproved Comments</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Cotact messages -->
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Messages
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Admin/Contact/AllMessages" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All Messages</p>
+                                    </a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a href="/Admin/Contact/UnreadMessages" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Unread Messages</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Log list -->
+                        <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Log
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Admin/Log/LogList" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Log list</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
                         <!-- Admin -->
                         @if (UserStatic.isAdmin)
                         {
@@ -367,31 +432,27 @@
                                     </li>
                                 </ul>
                             </li>
-                        }
+ }
                         else
                         {
-                         <li class="nav-item has-treeview">
-                             <a href="#" class="nav-link">
-                                 <i class="nav-icon fas fa-book"></i>
-                                 <p>
-                                     User
-                                     <i class="right fas fa-angle-left"></i>
-                                 </p>
-                             </a>
-                             <ul class="nav nav-treeview">
-                                 <li class="nav-item">
-                                     <a href="/Admin/User/UpdateUser/@UserStatic.UserID" class="nav-link">
-                                         <i class="far fa-circle nav-icon"></i>
-                                         <p>Update User</p>
-                                     </a>
-                                 </li>
-                             </ul>
-                         </li>
-                        }
-
-
-
-
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-book"></i>
+                                    <p>
+                                        User
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Admin/User/UpdateUser/@UserStatic.UserID" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Update User</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+}
 
                     </ul>
                 </nav>
@@ -489,5 +550,33 @@
             });
         });
     </script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            GetCounts();
+        });
+    </script>
+
+    <script type="text/javascript">
+        setInterval(function () {
+            GetCounts();
+        }, 10000)
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () { });
+
+        function GetCounts() {
+            $.ajax({
+                url: "@Url.Action("GetCounts", "Post")",
+                type: "POST",
+                success: function (result) {
+                    $("#CommentCount").html(result.CommentCount);
+                    $("#MessageCount").html(result.MessageCount);
+                }
+            });
+        }
+    </script>
+
 </body>
 </html>

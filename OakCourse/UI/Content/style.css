@@ -1911,25 +1911,37 @@ input:focus {
   height: 48px;
   width: 100%;
   background-color: #393c3d;
-  font-size: 12px;
+  font-size: 18px;
   margin-bottom: 15px;
-  padding: 10px 30px;
+  padding: 5px 20px;
   color: #ffffff;
   -webkit-transition-duration: 500ms;
   -o-transition-duration: 500ms;
   transition-duration: 500ms;
   border: none;
   border-radius: 0; }
-  .form-control:focus {
-    box-shadow: none;
-    background-color: #393c3d; }
+    .form-control:focus {
+        color:#ffffff;
+        box-shadow: none;
+        background-color: #393c3d;
+    }
 
 select.form-control {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none; }
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
 
 textarea.form-control {
   height: 140px; }
+
+
+/* correção do problema de mudar a cor do input quando é usado o preenchimento automático */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 50000s ease-in-out 0s, color 5000s ease-in-out 0s;
+
 
 /*# sourceMappingURL=style.css.map */

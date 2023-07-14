@@ -61,7 +61,7 @@ namespace UI.Areas.Admin.Controllers
 
                         LogBLL.AddLog(General.ProcessType.Login, General.TableName.Login, 12);
 
-                        return RedirectToAction("Index", "Post");
+                        return RedirectToAction("PostList", "Post");
                     }
                 
                     else

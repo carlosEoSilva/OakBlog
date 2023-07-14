@@ -6,6 +6,11 @@
 
 @model List<DTO.PostDTO>
 
+@using DTO
+@{ 
+    CountDTO countdto = (CountDTO)ViewData["AllCounts"];
+}
+
 @Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")
 
 <section class="content-header">
@@ -25,6 +30,54 @@
 
 <div class="card">
 
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>@countdto.PostCount</h3>
+
+                    <p>Post Count</p>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>@countdto.ViewCount</h3>
+
+                    <p>Sum View Count</p>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>@countdto.CommentCount</h3>
+
+                    <p>Comment Count</p>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h3>@countdto.MessageCount</h3>
+
+                    <p>Message Count</p>
+                </div>
+            </div>
+        </div>
+        <!-- ./col -->
+    </div>
+    <!-- /.row -->
     <!-- table -->
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
@@ -32,6 +85,7 @@
                 <tr>
                     <th>Title</th>
                     <th>Category Name</th>
+                    <th>Add Date</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>
@@ -64,7 +118,7 @@
                         <td align="center" valign="middle">
                             <!-- remover -->
                             <a href="#">
-                                <img onclick="AskQuestion('/Admin/Post/DeletePost/', @item.ID)"  style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
+                                <img onclick="AskQuestion('/Admin/Post/DeletePost/', @item.ID)" style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
                             </a>
                         </td>
 
@@ -77,6 +131,7 @@
                 <tr>
                     <th>Title</th>
                     <th>Category Name</th>
+                    <th>Add Date</th>
                     <th>Update</th>
                     <th>Delete</th>
                 </tr>

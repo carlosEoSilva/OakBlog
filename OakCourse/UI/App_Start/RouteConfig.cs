@@ -13,6 +13,9 @@ namespace UI
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //note-16
+            routes.MapMvcAttributeRoutes();
+
             routes.MapRoute(
                 name: "Home",
                 url: "",

@@ -96,8 +96,12 @@
     <Content Include="Areas\Admin\Content\css\font-awesome\fontawesome.min.css" />
     <Content Include="Areas\Admin\Content\css\icheck-bootstrap.min.css" />
     <Content Include="Areas\Admin\Content\css\responsive.bootstrap4.min.css" />
+    <Content Include="Areas\Admin\Content\icons\approved.png" />
     <Content Include="Areas\Admin\Content\icons\delete-icon.png" />
+    <Content Include="Areas\Admin\Content\icons\not-read.png" />
+    <Content Include="Areas\Admin\Content\icons\read.png" />
     <Content Include="Areas\Admin\Content\icons\refresh-icon.png" />
+    <Content Include="Areas\Admin\Content\icons\reprove.png" />
     <Content Include="Areas\Admin\Content\js\adminlte.min.js" />
     <Content Include="Areas\Admin\Content\js\bootstrap.bundle.min.js" />
     <Content Include="Areas\Admin\Content\js\ckeditor\ckeditor.js" />
@@ -114,6 +118,9 @@
     <Content Include="Areas\Admin\Content\js\sweetalert2.min.js" />
     <Content Include="Areas\Admin\Content\tempimage\logo.jpg" />
     <Content Include="Areas\Admin\Content\tempimage\user3-128x128.jpg" />
+    <Content Include="Areas\Admin\Content\toastr\toastr.css" />
+    <Content Include="Areas\Admin\Content\toastr\toastr.min.css" />
+    <Content Include="Areas\Admin\Content\toastr\toastr.min.js" />
     <Content Include="Areas\Admin\Views\User\AddUser.cshtml" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -142,7 +149,10 @@
     <Compile Include="Areas\Admin\Controllers\AdsController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CommentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactController.cs" />
     <Compile Include="Areas\Admin\Controllers\FavController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LogController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\Controllers\MetaController.cs" />
     <Compile Include="Areas\Admin\Controllers\PostController.cs" />
@@ -209,11 +219,19 @@
     <Content Include="Content\fonts\themify.eot" />
     <Content Include="Content\fonts\themify.ttf" />
     <Content Include="Content\fonts\themify.woff" />
+    <Content Include="Areas\Admin\Content\toastr\toastr.js.map" />
+    <Content Include="Areas\Admin\Views\Comment\UnapprovedComments.cshtml" />
+    <Content Include="Areas\Admin\Views\Comment\AllComments.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\UnreadMessages.cshtml" />
+    <Content Include="Areas\Admin\Views\Contact\AllMessages.cshtml" />
+    <Content Include="Areas\Admin\Views\Log\LogList.cshtml" />
     <None Include="packages.config" />
     <Content Include="Views\Shared\HomeLayout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\CategoryPostList.cshtml" />
     <Content Include="Views\Home\PostDetail.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

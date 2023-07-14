@@ -47,6 +47,33 @@ namespace BLL
 
         }
 
+        public CountDTO GetAllCounts()
+        {
+            return dao.GetAllCounts();
+        }
+
+        public List<CommentDTO> GetAllComments()
+        {
+            return dao.GetAllComments();
+        }
+
+        public void DeleteComment(int ID)
+        {
+            dao.DeleteComment(ID);
+            LogDAO.AddLog(General.ProcessType.CommentDelete, General.TableName.Comment, ID);
+        }
+
+        public void ApproveComment(int ID)
+        {
+            dao.ApproveComment(ID);
+            LogDAO.AddLog(General.ProcessType.CommentApprove, General.TableName.Comment, ID);
+        }
+
+        public List<CommentDTO> GetComments()
+        {
+            return dao.GetComments();
+        }
+
         public List<PostDTO> GetPosts()
         {
             return dao.GetPosts();
@@ -78,6 +105,23 @@ namespace BLL
                 LogDAO.AddLog(General.ProcessType.TagAdd, General.TableName.Tag, tagID);
 
             }
+        }
+
+        public bool AddComment(GeneralDTO model)
+        {
+            Comment comment = new Comment
+            {
+                PostID= model.PostID,
+                NameSurname= model.Name,
+                Email= model.Email,
+                CommentContent= model.Message,
+                AddDate= DateTime.Now,
+                isApproved= false,
+                isDeleted= false
+            };
+
+            dao.AddComment(comment);
+            return true;
         }
 
         void SavePostImage(List<PostImageDTO> list, int PostID)
@@ -156,6 +200,14 @@ namespace BLL
             List<PostImageDTO> imagelist = dao.DeletePost(ID);
             LogDAO.AddLog(General.ProcessType.PostDelete, General.TableName.post, ID);
             return imagelist;
+        }
+
+        public CountDTO GetCounts()
+        {
+            CountDTO dto = new CountDTO();
+            dto.MessageCount = dao.GetMessageCount();
+            dto.CommentCount = dao.GetCommentCount();
+            return dto;
         }
     }
 }

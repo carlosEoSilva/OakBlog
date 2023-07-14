@@ -19,9 +19,7 @@ namespace DAL
         public string ImagePath { get; set; }
         public System.DateTime AddDate { get; set; }
         public bool isDeleted { get; set; }
-
-        //foi necessário usar um valor padrão porque o banco está configurado para NOT NULL
-        public System.DateTime DeletedDate { get; set; } = new DateTime(1800, 01, 01);
+        public System.DateTime DeletedDate { get; set; }
         public Nullable<int> LastUpdateUserID { get; set; }
         public System.DateTime LastUpdateDate { get; set; }
     

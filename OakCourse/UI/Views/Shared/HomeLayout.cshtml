@@ -25,12 +25,12 @@
 
     <!-- Title -->
     <title>Vizew - Blog &amp; Magazine HTML Template</title>
-
     <!-- Favicon -->
-    <link rel="icon" href="~/Areas/Admin/Content/FavImage/logo.jpg">
-
+    <link rel="icon" href="~/Areas/Admin/Content/FavImage/logo.png">
     <!-- Stylesheet -->
     <link href="~/Content/style.css" rel="stylesheet" />
+    <!-- Toatr -->
+    <link href="~/Areas/Admin/Content/toastr/toastr.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -79,8 +79,8 @@
                             </div>
                             <!-- Top Search Area -->
                             <div class="top-search-area">
-                                <form action="index.html" method="post">
-                                    <input type="search" name="top-search" id="topSearch" placeholder="Search...">
+                                <form action="/search" method="post">
+                                    <input type="search" name="SearchText" id="topSearch" placeholder="Search...">
                                     <button type="submit" class="btn"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </form>
                             </div>
@@ -101,7 +101,7 @@
                     <nav class="classy-navbar justify-content-between" id="vizewNav">
 
                         <!-- Nav brand -->
-                        <a href="@Url.RouteUrl("Home")" class="nav-brand"><img src="~/Areas/Admin/Content/FavImage/logo.jpg" alt=""></a>
+                        <a href="@Url.RouteUrl("Home")" class="nav-brand"><img src="~/Areas/Admin/Content/FavImage/logo.png" alt=""></a>
 
                         <!-- Navbar Toggler -->
                         <div class="classy-navbar-toggler">
@@ -126,7 +126,7 @@
                                     }
 
                                     <li><a href="@Url.RouteUrl("Category", new { @CategoryName="video"})">Videos</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="/contactus">Contact</a></li>
                                 </ul>
                             </div>
                             <!-- Nav End -->
@@ -148,7 +148,7 @@
                 <div class="col-12 col-sm-6 col-xl-3">
                     <div class="footer-widget mb-70">
                         <!-- Logo -->
-                        <a href="@Url.RouteUrl("Home")" class="foo-logo d-block mb-4"><img src="~/Areas/Admin/Content/FavImage/logo.jpg" alt=""></a>
+                        <a href="@Url.RouteUrl("Home")" class="foo-logo d-block mb-4"><img src="~/Areas/Admin/Content/FavImage/logo.png" alt=""></a>
                     </div>
                 </div>
 
@@ -170,7 +170,7 @@
                                 </div>
 
                                 <div class="single-twit">
-                                    <a href="#"><p><i class="fa fa-star"></i>Contact</p></a>
+                                    <a href="/contactus"><p><i class="fa fa-star"></i>Contact</p></a>
                                 </div>
                             </div>
                         </div>
@@ -248,6 +248,24 @@
     <script src="~/Content/js/plugins/plugins.js"></script>
     <!-- Active js -->
     <script src="~/Content/js/active.js"></script>
+    <!-- Toastr -->
+    <script src="~/Areas/Admin/Content/toastr/toastr.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //note-15
+            var result = "@ViewData["CommentState"]";
+
+            if (result != "" && result != null) {
+                if (result == "Success")
+                    toastr.success(result);
+                else
+                    toastr.error(result);
+            }
+
+            
+        })
+    </script>
 </body>
 
 </html>
