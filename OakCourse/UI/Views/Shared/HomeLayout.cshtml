@@ -9,8 +9,6 @@
     List<MetaDTO> metalist = layoutdto.Metalist;
     AddressDTO address = layoutdto.Address;
     List<PostDTO> hotnews = layoutdto.HotNews;
-    //FavDTO favdto = layoutdto.FavDTO; -- está gerando erro
-
 }
 
 <head>
@@ -20,7 +18,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     @foreach (var item in metalist)
     {
-    <meta name="@item.Name" content="@item.MetaContent">
+        <meta name="@item.Name" content="@item.MetaContent">
     }
 
     <!-- Title -->
@@ -34,16 +32,6 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="lds-ellipsis">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
         <!-- Top Header Area -->

@@ -3,7 +3,6 @@ C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCou
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\obj\Debug\DTO.dll
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\obj\Debug\DTO.pdb
-C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\bin\Debug\Microsoft.Web.Infrastructure.dll
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\bin\Debug\System.Web.Helpers.dll
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\bin\Debug\System.Web.Mvc.dll
@@ -18,3 +17,4 @@ C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCou
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\bin\Debug\System.Web.WebPages.Deployment.xml
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\obj\Debug\DTO.csproj.CopyComplete
+C:\Users\carlos.silva0000\Documents\PastaTrabalho\cursos\Udemy\Csharp\Mvc\OakCourse\OakCourse\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache

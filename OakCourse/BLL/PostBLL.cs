@@ -2,10 +2,6 @@
 using DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.Mvc;
 
 namespace BLL
 {
@@ -138,13 +134,14 @@ namespace BLL
                     LastUpdateDate = DateTime.Now,
                     LastUpdateUserID = UserStatic.UserID
                 };
+
                 imagelist.Add(image);
             }
+
             foreach (var item in imagelist)
             {
                 int imageID = dao.AddImage(item);
                 LogDAO.AddLog(General.ProcessType.ImageAdd, General.TableName.Image, imageID);
-
             }
         }
 

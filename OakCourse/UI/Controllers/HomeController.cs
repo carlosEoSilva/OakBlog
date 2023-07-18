@@ -37,11 +37,9 @@ namespace UI.Controllers
 
         public ActionResult PostDetail(int? ID)
         {
-            HomeLayoutDTO layoutdto = new HomeLayoutDTO();
-            layoutdto = layoutbll.GetLayoutData();
+            HomeLayoutDTO layoutdto = layoutbll.GetLayoutData();
             ViewData["LayoutDTO"] = layoutdto;
-            GeneralDTO dto = new GeneralDTO();
-            dto = bll.GetPostDetailPageItemsWithID(ID);
+            GeneralDTO dto = bll.GetPostDetailPageItemsWithID(ID);
             return View(dto);
         }
 

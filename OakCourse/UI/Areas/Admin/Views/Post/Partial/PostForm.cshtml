@@ -33,8 +33,8 @@
 
     <div class="form-group">
         <label>Post Image</label>
-        <br />
-        <input type="file" name="PostImage" accept="image/gif, image/jpg, image/jpeg, image/png" multiple onchange="$('#PostImage')[0].src=window.URL.createObjectURL(this.files[0])" />
+        <input type="file" name="PostImage" accept="image/gif, image/jpg, image/jpeg, image/png" 
+               multiple onchange="imagePreview(this, '#PostImage')" />
         <br />
         <img id="PostImage" width="250" height="150" />
     </div>
@@ -76,7 +76,6 @@
 
     @if (Model.isUpdate)
     {
-
         <div class="card-body">
             <table id="example2" class="table table-bordered table-hover">
                 <thead>

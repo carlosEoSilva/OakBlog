@@ -11,10 +11,8 @@ namespace DAL
     {
         public FavDTO GetFav()
         {
-            var v = db.FavLogoTitles.Count();
-            FavLogoTitle fav = new FavLogoTitle();
-            fav = db.FavLogoTitles.FirstOrDefault(x => x.isDeleted == false);
-            //var fav = db.FavLogoTitles.First();
+            //por algum motivo o campo DeletedDate não ficar nulo no banco.
+            FavLogoTitle fav = db.FavLogoTitles.First();
 
             FavDTO dto = new FavDTO
             {
@@ -42,15 +40,17 @@ namespace DAL
                 };
 
                 //?BUG? gera um erro quando tenta atualizar o title...
-                //fav.Title = model.Title;
+                fav.Title = model.Title;
 
-                if(model.Logo != null)
+                if (model.Logo != null)
                 {
+                    //caminho da imagem do logo
                     fav.Logo = model.Logo;
                 }
 
                 if(model.Fav != null)
                 {
+                    //caminho da imagem do fav
                     fav.Fav = model.Fav;
                 }
 

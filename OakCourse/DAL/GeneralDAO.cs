@@ -201,11 +201,12 @@ namespace DAL
 
                 commentdtolist.Add(cdto);
             }
+
             dto.CommentList = commentdtolist;
             List<PostTag> tags = db.PostTags.Where(x => x.isDeleted == false && x.PostID == ID).ToList();
             List<TagDTO> taglist = new List<TagDTO>();
 
-            foreach(var item in taglist)
+            foreach(var item in tags)
             {
                 TagDTO tdto = new TagDTO
                 {

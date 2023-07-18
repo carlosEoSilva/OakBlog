@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -368,8 +366,8 @@ namespace DAL
                 post.ShortContent = model.ShortContent;
                 post.Slider = model.Slider;
 
-                post.T_User.AddDate = DateTime.Now.Date;
-                post.T_User1.AddDate = DateTime.Now.Date;
+                post.T_User.AddDate = DateTime.Now;
+                post.T_User1.AddDate = DateTime.Now;
 
                 db.SaveChanges();
             }

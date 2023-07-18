@@ -17,21 +17,20 @@
     <input type="number" name="ID" value="@Model.ID" hidden/>
 
     <div class="form-group">
-        @Html.LabelFor(x => x.SocialImage)
+        @Html.LabelFor(x => x.SocialImage, "Select Social Media Image")
 
-        <input type="file" name="SocialImage" accept="image/gif, image/jpeg, image/png"
-               onchange="$('#SocialImage')[0].src= window.URL.createObjectURL(this.files[0])" />
+        <input type="file" name="SocialImage" accept="image/gif, image/jpeg, image/png" onchange="imagePreview(this, '#SocialImage');" />
 
         <br />
 
         @if (Model != null && Model.ImagePath != null)
         {
             <br />
-            <img src="~/Areas/Admin/Content/SocialMediaImages/@Model.ImagePath" widht="300" height="200" />
+            <img id="SocialImage" src="~/Areas/Admin/Content/SocialMediaImages/@Model.ImagePath" width="200" height="200" />
         }
         else
         {
-            <img widht="300" height="200" id="SocialImage" />
+            <img width="200" height="200" id="SocialImage" />
         }
     </div>
 
@@ -39,3 +38,4 @@
         <button type="submit" class="btn btn-primary">Save</button>
     </div>
 </div>
+

@@ -1,23 +1,20 @@
 ﻿using BLL;
 using DTO;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace UI.Areas.Admin.Controllers
 {
-    public class FavController : BaseController
+    public class FavController : Controller //BaseController
     {
         FavBLL bll = new FavBLL();
 
         public ActionResult UpdateFav()
         {
-            FavDTO dto = new FavDTO();
-            dto = bll.GetFav();
+            FavDTO dto = bll.GetFav();
             return View(dto);
         }
 
@@ -30,30 +27,8 @@ namespace UI.Areas.Admin.Controllers
             }
             else
             {
-                if (model.FavImage != null)
-                {
-                    string favname = "";
-                    HttpPostedFileBase postedfilefav = model.FavImage;
-                    Bitmap FavImage = new Bitmap(postedfilefav.InputStream);
-                    Bitmap resizefavImage = new Bitmap(FavImage, 100, 100);
-                    string ext = Path.GetExtension(postedfilefav.FileName);
-
-                    if(ext == ".ico" || ext == ".jpg" || ext == ".jpeg" || ext == ".png")
-                    {
-                        string favunique = Guid.NewGuid().ToString();
-                        favname = favunique + postedfilefav.FileName;
-                        resizefavImage.Save(Server.MapPath("~/Areas/Admin/Content/FavImage/" + favname));
-                        model.Fav = favname;
-                    }
-                    else
-                    {
-                        ViewBag.ProcessState = General.Messages.ExtensionError;
-                    }
-                }
-
                 if (model.LogoImage != null)
                 {
-                    string logoname = "";
                     HttpPostedFileBase postedfilelogo = model.LogoImage;
                     Bitmap LogoImage = new Bitmap(postedfilelogo.InputStream);
                     Bitmap resizefavImage = new Bitmap(LogoImage, 100, 100);
@@ -62,7 +37,8 @@ namespace UI.Areas.Admin.Controllers
                     if (ext == ".ico" || ext == ".jpg" || ext == ".jpeg" || ext == ".png")
                     {
                         string logounique = Guid.NewGuid().ToString();
-                        logoname = logounique + postedfilelogo.FileName;
+                        string logoname = logounique + postedfilelogo.FileName;
+                        logoname = logoname.Remove(0, logoname.Length - 49);
                         resizefavImage.Save(Server.MapPath("~/Areas/Admin/Content/FavImage/" + logoname));
                         model.Logo = logoname;
                     }
@@ -72,9 +48,28 @@ namespace UI.Areas.Admin.Controllers
                     }
                 }
 
-                FavDTO returndto = new FavDTO();
-                returndto = bll.UpdateFav(model);
+                if (model.FavImage != null)
+                {
+                    HttpPostedFileBase postedfilefav = model.FavImage;
+                    Bitmap FavImage = new Bitmap(postedfilefav.InputStream);
+                    Bitmap resizefavImage = new Bitmap(FavImage, 100, 100);
+                    string ext = Path.GetExtension(postedfilefav.FileName);
 
+                    if (ext == ".ico" || ext == ".jpg" || ext == ".jpeg" || ext == ".png")
+                    {
+                        string favunique = Guid.NewGuid().ToString();
+                        string favname = favunique + postedfilefav.FileName;
+                        favname = favname.Remove(0, favname.Length - 49);
+                        resizefavImage.Save(Server.MapPath("~/Areas/Admin/Content/FavImage/" + favname));
+                        model.Fav = favname;
+                    }
+                    else
+                    {
+                        ViewBag.ProcessState = General.Messages.ExtensionError;
+                    }
+                }
+
+                FavDTO returndto = bll.UpdateFav(model);
 
                 //?BUG? não está apagando as imagens anteriores
                 if(model.FavImage != null)

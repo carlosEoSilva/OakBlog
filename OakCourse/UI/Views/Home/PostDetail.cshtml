@@ -6,10 +6,7 @@
 
 @model DTO.GeneralDTO
 
-<!-- ##### Breadcrumb Area Start ##### -->
-<!-- ##### Breadcrumb Area End ##### -->
-<!-- ##### Pager Area Start ##### -->
-<!-- Featured Post Slides -->
+<!-- Post Slides -->
 <div class="featured-post-slides owl-carousel mb-30">
 
     @foreach (var item in Model.PostDetail.PostImages)
@@ -63,14 +60,6 @@
                         @Html.Raw(Model.PostDetail.PostContent)
 
                         <br />
-                        <div class="row">
-                            <div class="col-12">
-                                <!-- Section Heading -->
-                                <div class="section-heading">
-                                    <a href="@Model.Adslist[1].Link" target="_blank"><img src="~/Areas/Admin/Content/AdsImage/@Model.Adslist[1].ImagePath" /></a>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- Post Tags -->
                         <div class="post-tags mt-30">
@@ -86,11 +75,11 @@
                         <!-- Post Author -->
                         <div class="vizew-post-author d-flex align-items-center py-5">
                             <div class="post-author-thumb">
-                                <img src="img/bg-img/30.jpg" alt="">
+                                <img src="~/Areas/Admin/Content/PostImage/post-author.png" alt="">
                             </div>
                             <div class="post-author-desc pl-4">
                                 <a href="#" class="author-name">MVC Course</a>
-                                <p>Hello! My name is Nicolas Sarkozy. I’m a web designer and front-end web developer with over fifteen years of professional.</p>
+                                <p>Hello! My name is Carlos and i'm a fullstack web developer.<br /> Allways learning, allways practicing, allways growing.</p>
 
                             </div>
                         </div>

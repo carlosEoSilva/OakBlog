@@ -15,13 +15,13 @@ namespace DAL
     public partial class FavLogoTitle
     {
         public int ID { get; set; }
+        public int LastUpdateUserID { get; set; }
         public string Title { get; set; }
-        public string Fav { get; set; }
-        public string Logo { get; set; }
-        public System.DateTime AddDate { get; set; }
+        public string Fav { get; set; }//caminho da imagem
+        public string Logo { get; set; }//caminho da imagem
         public bool isDeleted { get; set; }
         public System.DateTime DeletedDate { get; set; }
-        public int LastUpdateUserID { get; set; }
+        public System.DateTime AddDate { get; set; }
         public System.DateTime LastUpdateDate { get; set; }
     
         public virtual T_User T_User { get; set; }

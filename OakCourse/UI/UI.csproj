@@ -114,6 +114,7 @@
     <Content Include="Areas\Admin\Content\js\input-images.js" />
     <Content Include="Areas\Admin\Content\js\jquery.dataTables.min.js" />
     <Content Include="Areas\Admin\Content\js\jquery.min.js" />
+    <Content Include="Areas\Admin\Content\js\meu-utils.js" />
     <Content Include="Areas\Admin\Content\js\responsive.bootstrap4.min.js" />
     <Content Include="Areas\Admin\Content\js\sweetalert2.min.js" />
     <Content Include="Areas\Admin\Content\tempimage\logo.jpg" />

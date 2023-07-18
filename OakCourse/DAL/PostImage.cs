@@ -19,7 +19,7 @@ namespace DAL
         public string ImagePath { get; set; }
         public System.DateTime AddDate { get; set; }
         public bool isDeleted { get; set; }
-        public System.DateTime DeletedDate { get; set; }
+        public System.DateTime DeletedDate { get; set; } = new DateTime(2000, 1, 1);
         public Nullable<int> LastUpdateUserID { get; set; }
         public System.DateTime LastUpdateDate { get; set; }
     

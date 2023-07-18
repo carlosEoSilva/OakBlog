@@ -63,9 +63,8 @@ namespace UI.Areas.Admin.Controllers
                 {
                     Bitmap image = new Bitmap(postedfile.InputStream);
                     Bitmap resizeimage = new Bitmap(image, 750, 450);
-                    string filename = "";
                     string uniqueNumber = Guid.NewGuid().ToString();
-                    filename = uniqueNumber + postedfile.FileName;
+                    string filename = uniqueNumber + postedfile.FileName;
                     resizeimage.Save(Server.MapPath("~/Areas/Admin/Content/PostImage/" + filename));
                     PostImageDTO dto = new PostImageDTO();
                     dto.ImagePath = filename;
@@ -97,8 +96,7 @@ namespace UI.Areas.Admin.Controllers
     
         public ActionResult UpdatePost(int ID)
         {
-            PostDTO model = new PostDTO();
-            model = bll.GetPostWithID(ID);
+            PostDTO model = bll.GetPostWithID(ID);
             model.Categories = CategoryBLL.GetCategoriesForDropdown();
             model.isUpdate = true;
             return View(model);

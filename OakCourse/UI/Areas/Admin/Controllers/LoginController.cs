@@ -15,35 +15,6 @@ namespace UI.Areas.Admin.Controllers
             return View(dto);
         }
 
-        //[HttpPost]
-        //public ActionResult Index(UserDTO model)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        UserDTO user = userbll.GetUserWithUsernameAndPassword(model);
-        //        if(user.ID != 0)
-        //        {
-        //            UserStatic.UserID = user.ID;
-        //            UserStatic.isAdmin = user.isAdmin;
-        //            UserStatic.Namesurname = user.Name;
-        //            UserStatic.Imagepath = user.ImagePath;
-
-        //            LogBLL.AddLog(General.ProcessType.Login, General.TableName.Login, 12);
-
-        //            return RedirectToAction("Index", "Post");
-        //        }
-        //        else
-        //        {
-        //            return View(model);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return View(model);
-        //    }
-
-        //}
-
         [HttpPost]
         public ActionResult Index(UserDTO model)
         {
@@ -52,6 +23,7 @@ namespace UI.Areas.Admin.Controllers
                 if (model.Username != null && model.Password != null)
                 {
                     UserDTO user = userbll.GetUserWithUsernameAndPassword(model);
+
                     if (user.ID != 0)
                     {
                         UserStatic.UserID = user.ID;

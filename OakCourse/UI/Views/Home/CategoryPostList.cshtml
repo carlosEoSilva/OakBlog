@@ -6,27 +6,14 @@
 
 @model DTO.GeneralDTO
 
-<!-- ##### Archive Grid Posts Area Start ##### -->
 <div class="vizew-grid-posts-area mb-80">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-8">
-                <!-- Archive Catagory & View Options -->
                 <div class="archive-catagory-view mb-50 d-flex align-items-center justify-content-between">
-                    <!-- Catagory -->
+                    <!-- Category -->
                     <div class="archive-catagory">
                         <h4><i class="" aria-hidden="true"></i> @Model.CategoryName</h4>
-                    </div>
-                    <!-- View Options -->
-
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Section Heading -->
-                        <div class="section-heading">
-                            <a href="@Model.Adslist[1].Link" target="_blank"><img src="~/Areas/Admin/Content/AdsImage/@Model.Adslist[1].ImagePath" /></a>
-                        </div>
                     </div>
                 </div>
 
@@ -54,8 +41,6 @@
                             </div>
                         </div>
                     }
-
-
                 }
                 else
                 {

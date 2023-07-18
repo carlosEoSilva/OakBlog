@@ -13,13 +13,13 @@ namespace DTO
     {
         public int ID { get; set; }
         [Required(ErrorMessage="Please fill the title area")]
+        public int CategoryID { get; set; }
         public string Title { get; set; }
         [Required(ErrorMessage = "Please fill the Short Content area")]
         public string ShortContent { get; set; }
         [Required(ErrorMessage = "Please fill the Post Content area")]
         public string PostContent { get; set; }
         public string CategoryName { get; set; }
-        public int CategoryID { get; set; }
         public IEnumerable<SelectListItem> Categories { get; set; }
         public List<PostImageDTO> PostImages { get; set; }
         [Required(ErrorMessage = "Please fill the Post Image area")]
