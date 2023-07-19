@@ -30,10 +30,9 @@
 
 <div class="card">
 
-    <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-3 col-6">
-            <!-- small box -->
+           
             <div class="small-box bg-info">
                 <div class="inner">
                     <h3>@countdto.PostCount</h3>
@@ -42,9 +41,9 @@
                 </div>
             </div>
         </div>
-        <!-- ./col -->
+       
         <div class="col-lg-3 col-6">
-            <!-- small box -->
+            
             <div class="small-box bg-success">
                 <div class="inner">
                     <h3>@countdto.ViewCount</h3>
@@ -53,9 +52,9 @@
                 </div>
             </div>
         </div>
-        <!-- ./col -->
+        
         <div class="col-lg-3 col-6">
-            <!-- small box -->
+            
             <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>@countdto.CommentCount</h3>
@@ -64,9 +63,9 @@
                 </div>
             </div>
         </div>
-        <!-- ./col -->
+        
         <div class="col-lg-3 col-6">
-            <!-- small box -->
+            
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h3>@countdto.MessageCount</h3>
@@ -75,9 +74,9 @@
                 </div>
             </div>
         </div>
-        <!-- ./col -->
+       
     </div>
-    <!-- /.row -->
+    
     <!-- table -->
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
@@ -91,41 +90,40 @@
                 </tr>
             </thead>
 
+        <tbody>
             @foreach (var item in Model)
             {
-                <tbody>
-                    <tr id="a_@item.ID">
+            <tr id="a_@item.ID">
 
-                        <td>
-                            @item.Title
-                        </td>
+                <td>
+                    @item.Title
+                </td>
 
-                        <td>
-                            @item.CategoryName
-                        </td>
+                <td>
+                    @item.CategoryName
+                </td>
 
-                        <td>
-                            @item.AddDate.ToString("dd.MM.yyyy, dddd")
-                        </td>
+                <td>
+                    @item.AddDate.ToString("dd.MM.yyyy, dddd")
+                </td>
 
-                        <td align="center" valign="middle">
-                            <!-- atualizar -->
-                            <a href="/Admin/Post/UpdatePost/@item.ID">
-                                <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/refresh-icon.png" />
-                            </a>
-                        </td>
+                <td align="center" valign="middle">
+                    <!-- atualizar -->
+                    <a href="/Admin/Post/UpdatePost/@item.ID">
+                        <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/refresh-icon.png" />
+                    </a>
+                </td>
 
-                        <td align="center" valign="middle">
-                            <!-- remover -->
-                            <a href="#">
-                                <img onclick="AskQuestion('/Admin/Post/DeletePost/', @item.ID)" style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
-                            </a>
-                        </td>
+                <td align="center" valign="middle">
+                    <!-- remover -->
+                    <a href="#">
+                        <img onclick="AskQuestion('/Admin/Post/DeletePost/', @item.ID)" style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
+                    </a>
+                </td>
 
-                    </tr>
-                </tbody>
+            </tr>
             }
-
+        </tbody>
 
             <tfoot>
                 <tr>

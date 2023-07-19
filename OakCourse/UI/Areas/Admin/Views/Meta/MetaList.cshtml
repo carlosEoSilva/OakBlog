@@ -37,23 +37,23 @@
                     <th>Delete</th>
                 </tr>
             </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
 
-            @foreach (var item in Model)
-            {
-                <tbody>
                     <tr id="a_@item.MetaID">
-                        
+
                         <td>@item.Name</td>
-                        
+
                         <td>@item.MetaContent</td>
-                        
+
                         <td align="center" valign="middle">
                             <!-- atualizar -->
                             <a href="/Admin/Meta/UpdateMeta/@item.MetaID">
-                                <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/refresh-icon.png"/>
+                                <img style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/refresh-icon.png" />
                             </a>
                         </td>
-                        
+
                         <td align="center" valign="middle">
                             <!-- remover -->
                             <a href="#">
@@ -61,20 +61,20 @@
                             </a>
                         </td>
                     </tr>
-                </tbody>
-            }
+
+                }
+            </tbody>
 
 
-
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Meta Content</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                </tr>
-            </tfoot>
-        </table>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Meta Content</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
+            </table>
     </div>
     @Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")
 </div>

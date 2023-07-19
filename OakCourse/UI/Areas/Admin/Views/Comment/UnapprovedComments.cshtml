@@ -35,18 +35,18 @@
                     <th>Delete</th>
                 </tr>
             </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
 
-            @foreach (var item in Model)
-            {
-                <tbody>
                     <tr id="a_@item.ID">
 
                         <td>@item.PostTitle</td>
 
                         <td>@item.CommentContent</td>
-                        
+
                         <td>@item.Email</td>
-                        
+
                         <td>@item.AddDate.ToString("dd.mm.yyyy")</td>
 
                         <td align="center" valign="middle">
@@ -63,22 +63,22 @@
                             </a>
                         </td>
                     </tr>
-                </tbody>
-            }
+
+                }
+            </tbody>
 
 
-
-            <tfoot>
-                <tr>
-                    <th>Post Title</th>
-                    <th>Comment Content</th>
-                    <th>Email</th>
-                    <th>Add Date</th>
-                    <th>Approve</th>
-                    <th>Delete</th>
-                </tr>
-            </tfoot>
-        </table>
+                <tfoot>
+                    <tr>
+                        <th>Post Title</th>
+                        <th>Comment Content</th>
+                        <th>Email</th>
+                        <th>Add Date</th>
+                        <th>Approve</th>
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
+            </table>
     </div>
     @Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")
 </div>

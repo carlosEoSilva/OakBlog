@@ -35,12 +35,9 @@
 
     @using DTO
 
-    <!-- Site wrapper -->
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <!-- SEARCH FORM -->
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
@@ -57,23 +54,15 @@
                         <span class="badge badge-warning navbar-badge" id="CommentCount"></span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-                        <i class="fas fa-th-large"></i>
-                    </a>
-                </li>
             </ul>
         </nav>
-        <!-- /.navbar -->
+        <!-- .navbar -->
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link">
-
-                @*imagem do logo vai aqui*@
-                @*<img src="~/Areas/Admin/Content/tempimage/logo.jpg" />*@
-
-                <span class="brand-text font-weight-light">MySite</span>
+            <a href="@Url.RouteUrl("Home")" class="brand-link">
+                <img src="~/Areas/Admin/Content/FavImage/logo.png" style="width:50px; height:50px;"/>
+                <span class="brand-text font-weight-light">MvcProject</span>
             </a>
 
             <!-- Sidebar -->
@@ -432,7 +421,7 @@
                                     </li>
                                 </ul>
                             </li>
- }
+                        }
                         else
                         {
                             <li class="nav-item has-treeview">
@@ -452,8 +441,7 @@
                                     </li>
                                 </ul>
                             </li>
-}
-
+                        }
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -463,30 +451,9 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            @*<section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Blank Page</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Blank Page</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>*@
-            <!-- /.container-fluid -->
-            @*</section>*@
-
-            <!-- Main content -->
             <!-- é aqui que o conteúdo das outras views que usam este template será renderizado -->
             <!-- o RenderBody será substituído pelo HTML das outras Views -->
             @RenderBody()
-
-            <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
 
@@ -512,10 +479,18 @@
     <script src="~/Areas/Admin/Content/js/bootstrap.bundle.min.js"></script>
 
     <!-- DataTables -->
+    @*<script src="~/Areas/Admin/Content/js/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/dataTables.responsive.min.js"></script>
+    <script src="~/Areas/Admin/Content/js/responsive.bootstrap4.min.js"></script>*@
+
+    <!--///////////////////////////////////////////////////////////////////////////-->
     <script src="~/Areas/Admin/Content/js/jquery.dataTables.min.js"></script>
     <script src="~/Areas/Admin/Content/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/Areas/Admin/Content/js/dataTables.responsive.min.js"></script>
     <script src="~/Areas/Admin/Content/js/responsive.bootstrap4.min.js"></script>
+
+    <!--///////////////////////////////////////////////////////////////////////////-->
 
     <!-- AdminLTE App -->
     <script src="~/Areas/Admin/Content/js/sweetalert2.min.js"></script>
@@ -531,25 +506,12 @@
     <!--Minhas Funções personalizadas-->
     <script src="~/Areas/Admin/Content/js/meu-utils.js"></script>
 
-    <!-- script do modal de confirmação para apagar o registro -->
-    @*<script src="~/Areas/Admin/Content/js/delete-record.js"></script>*@
-
     <!-- page script DataTables -->
     <script>
         $(function () {
             $("#example1").DataTable({
                 "responsive": true,
                 "autoWidth": false,
-                "ordering": false,
-            });
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
             });
         });
     </script>

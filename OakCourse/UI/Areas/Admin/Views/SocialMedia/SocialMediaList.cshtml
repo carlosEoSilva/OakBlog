@@ -40,10 +40,10 @@
                     <th>Delete</th>
                 </tr>
             </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
 
-            @foreach (var item in Model)
-            {
-                <tbody>
                     <tr id="a_@item.ID">
 
                         <td>
@@ -68,25 +68,25 @@
                         <td align="center" valign="middle">
                             <!-- remover -->
                             <a href="#">
-                                <img onclick="AskQuestion('/Admin/SocialMedia/DeleteSocialMedia/', @item.ID)"  style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
+                                <img onclick="AskQuestion('/Admin/SocialMedia/DeleteSocialMedia/', @item.ID)" style="width: 15px; height: 20px;" src="~/Areas/Admin/Content/icons/delete-icon.png" />
                             </a>
                         </td>
                     </tr>
-                </tbody>
-            }
+
+                }
+            </tbody>
 
 
-
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>Link</th>
-                    <th>Image</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                </tr>
-            </tfoot>
-        </table>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Link</th>
+                        <th>Image</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
+            </table>
     </div>
 </div>
 

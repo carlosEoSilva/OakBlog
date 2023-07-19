@@ -40,10 +40,10 @@
                     <th>Delete</th>
                 </tr>
             </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
 
-            @foreach (var item in Model)
-            {
-                <tbody>
                     <tr id="a_@item.ID">
 
                         <td>
@@ -72,21 +72,21 @@
                             </a>
                         </td>
                     </tr>
-                </tbody>
-            }
+
+                }
+            </tbody>
 
 
-
-            <tfoot>
-                <tr>
-                    <th>Name</th>
-                    <th>User Name</th>
-                    <th>Image</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-                </tr>
-            </tfoot>
-        </table>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>User Name</th>
+                        <th>Image</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
+            </table>
     </div>
 </div>
 

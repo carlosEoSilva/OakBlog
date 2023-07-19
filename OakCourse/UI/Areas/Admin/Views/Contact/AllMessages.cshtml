@@ -40,10 +40,10 @@
                     <th>Delete</th>
                 </tr>
             </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
 
-            @foreach (var item in Model)
-            {
-                <tbody>
                     <tr id="a_@item.ID">
 
                         <td>@item.Subject</td>
@@ -83,21 +83,21 @@
                         </td>
 
                     </tr>
-                </tbody>
-            }
 
-            <tfoot>
-                <tr>
-                    <th>Subject</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Message</th>
-                    <th>Add Date</th>
-                    <th>Read/Unread</th>
-                    <th>Delete</th>
-                </tr>
-            </tfoot>
-        </table>
+                }
+            </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Subject</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Add Date</th>
+                        <th>Read/Unread</th>
+                        <th>Delete</th>
+                    </tr>
+                </tfoot>
+            </table>
     </div>
 
     @*@Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")*@
