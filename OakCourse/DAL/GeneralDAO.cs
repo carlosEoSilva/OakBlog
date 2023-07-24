@@ -166,6 +166,7 @@ namespace DAL
                 Language = post.LanguageName,
                 SeoLink = post.SeoLink,
                 CategoryID = post.CategoryID,
+                ViewCount= post.ViewCount,
                 CategoryName = (db.Categories.First(x => x.ID == post.CategoryID)).CategoryName
             };
 
