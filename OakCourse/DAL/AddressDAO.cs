@@ -2,98 +2,113 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class AddressDAO : PostContext
+    public class AddressDAO 
     {
         public int AddAddress(Address ads)
         {
-            try
+            //note-19
+            using(POSTDATAEntities db= new POSTDATAEntities())
             {
-                // incrementar o ID manualmente porque a tabela não foi configurada para auto-incrementar o ID...
-                Address lastEntry = db.Addresses.OrderByDescending(x => x.ID).First();
-                ads.ID = lastEntry.ID + 1;
+                try
+                {
+                    // incrementar o ID manualmente porque a tabela não foi configurada para auto-incrementar o ID...
+                    Address lastEntry = db.Addresses.OrderByDescending(x => x.ID).First();
+                    ads.ID = lastEntry.ID + 1;
 
-                db.Addresses.Add(ads);
-                db.SaveChanges();
-                return ads.ID;
+                    db.Addresses.Add(ads);
+                    db.SaveChanges();
+                    return ads.ID;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+
+            
         }
 
         public List<AddressDTO> GetAdresses()
         {
-            List<Address> list = db.Addresses.Where(x => x.isDeleted == false)
+            using (POSTDATAEntities db = new POSTDATAEntities())
+            {
+                List<Address> list = db.Addresses.Where(x => x.isDeleted == false)
                 .OrderBy(x => x.AddDate)
                 .ToList();
 
-            List<AddressDTO> dtolist = new List<AddressDTO>();
+                List<AddressDTO> dtolist = new List<AddressDTO>();
 
-            foreach(var item in list)
-            {
-                AddressDTO dto = new AddressDTO
+                foreach (var item in list)
                 {
-                    ID = item.ID,
-                    AddressContent = item.Address1,
-                    Email = item.Email,
-                    Fax = item.Fax,
-                    LargeMapPath = item.MapPathLarge,
-                    Phone = item.Phone,
-                    Phone2 = item.Phone2,
-                    SmallMapPath = item.MapPathSmall
-                };
+                    AddressDTO dto = new AddressDTO
+                    {
+                        ID = item.ID,
+                        AddressContent = item.Address1,
+                        Email = item.Email,
+                        Fax = item.Fax,
+                        LargeMapPath = item.MapPathLarge,
+                        Phone = item.Phone,
+                        Phone2 = item.Phone2,
+                        SmallMapPath = item.MapPathSmall
+                    };
 
-                dtolist.Add(dto);
+                    dtolist.Add(dto);
+                }
+
+                return dtolist;
             }
-
-            return dtolist;
+                
         }
 
         public void DeleteAdress(int ID)
         {
-            try
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                Address ads = db.Addresses.First(x => x.ID == ID);
+                try
+                {
+                    Address ads = db.Addresses.First(x => x.ID == ID);
 
-                ads.isDeleted = true;
-                ads.DeletedDate = DateTime.Now;
-                ads.LastUpdateDate = DateTime.Now;
-                ads.LastUpdateUserID = UserStatic.UserID;
-                
-                db.SaveChanges();
-            }
-            catch(Exception ex)
-            {
-                throw ex;
+                    ads.isDeleted = true;
+                    ads.DeletedDate = DateTime.Now;
+                    ads.LastUpdateDate = DateTime.Now;
+                    ads.LastUpdateUserID = UserStatic.UserID;
+
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 
         public void AddAddress(AddressDTO model)
         {
-            try
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                Address ads = db.Addresses.First(x => x.ID == model.ID);
+                try
+                {
+                    Address ads = db.Addresses.First(x => x.ID == model.ID);
 
-                ads.Address1 = model.AddressContent;
-                ads.Email = model.Email;
-                ads.Fax = model.Fax;
-                ads.MapPathLarge = model.LargeMapPath;
-                ads.MapPathSmall = model.SmallMapPath;
-                ads.Phone = model.Phone;
-                ads.Phone2 = model.Phone2;
+                    ads.Address1 = model.AddressContent;
+                    ads.Email = model.Email;
+                    ads.Fax = model.Fax;
+                    ads.MapPathLarge = model.LargeMapPath;
+                    ads.MapPathSmall = model.SmallMapPath;
+                    ads.Phone = model.Phone;
+                    ads.Phone2 = model.Phone2;
 
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+                
         }
     }
 }

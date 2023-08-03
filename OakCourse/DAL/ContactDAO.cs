@@ -2,109 +2,128 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DAL
 {
-    public class ContactDAO : PostContext
+    public class ContactDAO
     {
         public void AddContact(Contact contact)
         {
-            db.Contacts.Add(contact);
-            db.SaveChanges();
+            using (POSTDATAEntities db = new POSTDATAEntities())
+            {
+                db.Contacts.Add(contact);
+                db.SaveChanges();
+            }
+                
         }
 
         public List<ContactDTO> GetUnreadMessages()
         {
-            List<ContactDTO> dtolist = new List<ContactDTO>();
-            List<Contact> list = db.Contacts
-                .Where(x => x.isDeleted == false && x.isRead == false)
-                .OrderByDescending(x => x.AddDate)
-                .ToList();
-
-            foreach(var item in list)
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                ContactDTO dto = new ContactDTO
+                List<ContactDTO> dtolist = new List<ContactDTO>();
+                List<Contact> list = db.Contacts
+                    .Where(x => x.isDeleted == false && x.isRead == false)
+                    .OrderByDescending(x => x.AddDate)
+                    .ToList();
+
+                foreach (var item in list)
                 {
-                    ID = item.ID,
-                    Subject = item.Subject,
-                    Name = item.NameSurname,
-                    Email = item.Email,
-                    Message = item.Message,
-                    AddDate = item.AddDate,
-                    isRead = item.isRead
-                };
+                    ContactDTO dto = new ContactDTO
+                    {
+                        ID = item.ID,
+                        Subject = item.Subject,
+                        Name = item.NameSurname,
+                        Email = item.Email,
+                        Message = item.Message,
+                        AddDate = item.AddDate,
+                        isRead = item.isRead
+                    };
 
-                dtolist.Add(dto);
+                    dtolist.Add(dto);
+                }
+
+                return dtolist;
             }
-
-            return dtolist;
+                
 
         }
 
         public List<ContactDTO> GetAllMessages()
         {
-            List<ContactDTO> dtolist = new List<ContactDTO>();
-            List<Contact> list = db.Contacts
-                .Where(x => x.isDeleted == false)
-                .OrderByDescending(x => x.AddDate)
-                .ToList();
-
-            foreach (var item in list)
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                ContactDTO dto = new ContactDTO
+                List<ContactDTO> dtolist = new List<ContactDTO>();
+                List<Contact> list = db.Contacts
+                    .Where(x => x.isDeleted == false)
+                    .OrderByDescending(x => x.AddDate)
+                    .ToList();
+
+                foreach (var item in list)
                 {
-                    ID = item.ID,
-                    Subject = item.Subject,
-                    Name = item.NameSurname,
-                    Email = item.Email,
-                    Message = item.Message,
-                    AddDate = item.AddDate,
-                    isRead = item.isRead
-                };
+                    ContactDTO dto = new ContactDTO
+                    {
+                        ID = item.ID,
+                        Subject = item.Subject,
+                        Name = item.NameSurname,
+                        Email = item.Email,
+                        Message = item.Message,
+                        AddDate = item.AddDate,
+                        isRead = item.isRead
+                    };
 
-                dtolist.Add(dto);
+                    dtolist.Add(dto);
+                }
+
+                return dtolist;
             }
-
-            return dtolist;
+                
         }
 
         public void UnreadMessage(int ID)
         {
-            Contact contact = db.Contacts.First(x => x.ID == ID);
+            using (POSTDATAEntities db = new POSTDATAEntities())
+            {
+                Contact contact = db.Contacts.First(x => x.ID == ID);
 
-            contact.isRead = false;
-            contact.ReadUserID = UserStatic.UserID;
-            contact.LastUpdateDate = DateTime.Now;
-            contact.LastUpdateUserID = UserStatic.UserID;
+                contact.isRead = false;
+                contact.ReadUserID = UserStatic.UserID;
+                contact.LastUpdateDate = DateTime.Now;
+                contact.LastUpdateUserID = UserStatic.UserID;
 
-            db.SaveChanges();
-
+                db.SaveChanges();
+            }
         }
 
         public void DeleteMessage(int ID)
         {
-            Contact contact= db.Contacts.First(x => x.ID == ID);
+            using (POSTDATAEntities db = new POSTDATAEntities())
+            {
+                Contact contact = db.Contacts.First(x => x.ID == ID);
 
-            contact.isDeleted = true;
-            contact.DeletedDate = DateTime.Now;
-            contact.LastUpdateDate = DateTime.Now;
-            contact.LastUpdateUserID = UserStatic.UserID;
+                contact.isDeleted = true;
+                contact.DeletedDate = DateTime.Now;
+                contact.LastUpdateDate = DateTime.Now;
+                contact.LastUpdateUserID = UserStatic.UserID;
 
-            db.SaveChanges();
+                db.SaveChanges();
+            }
+                
         }
 
         public void ReadMessage(int ID)
         {
-            Contact contact = db.Contacts.First(x => x.ID == ID);
+            using (POSTDATAEntities db = new POSTDATAEntities())
+            {
+                Contact contact = db.Contacts.First(x => x.ID == ID);
 
-            contact.isRead = true;
-            contact.ReadUserID = UserStatic.UserID;
-            contact.LastUpdateDate = DateTime.Now;
-            contact.LastUpdateUserID = UserStatic.UserID;
+                contact.isRead = true;
+                contact.ReadUserID = UserStatic.UserID;
+                contact.LastUpdateDate = DateTime.Now;
+                contact.LastUpdateUserID = UserStatic.UserID;
 
-            db.SaveChanges();
+                db.SaveChanges();
+            }
         }
     }
 }

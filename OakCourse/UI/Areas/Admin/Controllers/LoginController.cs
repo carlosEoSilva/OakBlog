@@ -9,7 +9,7 @@ namespace UI.Areas.Admin.Controllers
         UserBLL userbll = new UserBLL();
 
         // GET: Admin/Login
-        [Route("Login")]
+     
         public ActionResult Index()
         {
             UserDTO dto = new UserDTO();

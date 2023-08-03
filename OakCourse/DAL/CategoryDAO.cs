@@ -3,53 +3,61 @@ using System;
 using System.Collections.Generic;
 using System.Data.Objects.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace DAL
 {
-    public class CategoryDAO : PostContext
+    public class CategoryDAO 
     {
         public int AddCategory(Category category)
         {
-            try
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                db.Categories.Add(category);
-                db.SaveChanges();
-                return category.ID;
+                try
+                {
+                    db.Categories.Add(category);
+                    db.SaveChanges();
+                    return category.ID;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+                
         }
 
         public List<CategoryDTO> GetCategories()
         {
-            List<Category> list = db.Categories.Where(x => x.isDeleted == false)
-                .OrderByDescending(x => x.ID)
-                .ToList();
-
-            List<CategoryDTO> dtolist = new List<CategoryDTO>();
-
-            foreach (var item in list)
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                CategoryDTO dto = new CategoryDTO
+                List<Category> list = db.Categories.Where(x => x.isDeleted == false)
+                                .OrderByDescending(x => x.ID)
+                                .ToList();
+
+                List<CategoryDTO> dtolist = new List<CategoryDTO>();
+
+                foreach (var item in list)
                 {
-                    CategoryName = item.CategoryName,
-                    ID = item.ID
-                };
+                    CategoryDTO dto = new CategoryDTO
+                    {
+                        CategoryName = item.CategoryName,
+                        ID = item.ID
+                    };
 
-                dtolist.Add(dto);
+                    dtolist.Add(dto);
+                }
+
+                return dtolist;
             }
-
-            return dtolist;
+                
         }
 
         public static IEnumerable<SelectListItem> GetCategoriesForDropdown()
         {
-            IEnumerable<SelectListItem> categoryList = db.Categories.Where(x => x.isDeleted == false)
+            using (POSTDATAEntities db = new POSTDATAEntities())
+            {
+                IEnumerable<SelectListItem> categoryList = db.Categories.Where(x => x.isDeleted == false)
                 .OrderByDescending(x => x.AddDate)
                 .Select(x => new SelectListItem()
                 {
@@ -58,70 +66,84 @@ namespace DAL
                 })
                 .ToList();
 
-            return categoryList;
+                return categoryList;
+            }
+                
         }
 
         public List<Post> DeleteCategory(int ID)
         {
-            try
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                Category ct = db.Categories.First(x => x.ID == ID);
+                try
+                {
+                    Category ct = db.Categories.First(x => x.ID == ID);
 
-                ct.isDeleted = true;
-                ct.DeletedDate = DateTime.Now;
-                ct.LastUpdateDate = DateTime.Now;
-                ct.LastUpdateUserID = UserStatic.UserID;
+                    ct.isDeleted = true;
+                    ct.DeletedDate = DateTime.Now;
+                    ct.LastUpdateDate = DateTime.Now;
+                    ct.LastUpdateUserID = UserStatic.UserID;
 
-                db.SaveChanges();
+                    db.SaveChanges();
 
-                List<Post> postlist = db.Posts
-                    .Where(x => x.isDeleted == false && x.CategoryID == ID)
-                    .ToList();
+                    List<Post> postlist = db.Posts
+                        .Where(x => x.isDeleted == false && x.CategoryID == ID)
+                        .ToList();
 
-                return postlist;
+                    return postlist;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+                
         }
 
         public void UpdateCategory(CategoryDTO model)
         {
-            try
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                Category category = db.Categories.First(x => x.ID == model.ID);
+                try
+                {
+                    Category category = db.Categories.First(x => x.ID == model.ID);
 
-                category.CategoryName = model.CategoryName;
-                category.LastUpdateDate = DateTime.Now;
-                category.LastUpdateUserID = UserStatic.UserID;
+                    category.CategoryName = model.CategoryName;
+                    category.LastUpdateDate = DateTime.Now;
+                    category.LastUpdateUserID = UserStatic.UserID;
 
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+                
         }
 
         public CategoryDTO GetCategoryWithID(int ID)
         {
-            try
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                Category category = db.Categories.First(x => x.ID == ID);
-                
-                CategoryDTO dto = new CategoryDTO 
+                try
                 {
-                    ID= category.ID,
-                    CategoryName= category.CategoryName
-                };
+                    Category category = db.Categories.First(x => x.ID == ID);
+
+                    CategoryDTO dto = new CategoryDTO
+                    {
+                        ID = category.ID,
+                        CategoryName = category.CategoryName
+                    };
+
+                    return dto;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
                 
-                return dto;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
         }
     }
 }

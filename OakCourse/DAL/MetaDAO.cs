@@ -6,85 +6,104 @@ using System.Text;
 
 namespace DAL
 {
-    public class MetaDAO : PostContext
+    public class MetaDAO
     {
         public int AddMeta(Meta meta)
         {
-            try
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                db.Metas.Add(meta);
-                db.SaveChanges();
-                return meta.ID;
+                try
+                {
+                    db.Metas.Add(meta);
+                    db.SaveChanges();
+                    return meta.ID;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+                
         }
 
         public List<MetaDTO> GetMetaData()
         {
-            List<MetaDTO> metalist = new List<MetaDTO>();
-
-            List<Meta> list = db.Metas
-                .Where(x => x.isDeleted == false)
-                .OrderBy(x => x.AddDate)
-                .ToList();
-
-            foreach( var item in list)
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                MetaDTO dto = new MetaDTO();
-                dto.MetaID = item.ID;
-                dto.Name = item.Name;
-                dto.MetaContent = System.Text.Encoding.UTF7.GetString(item.MetaContent);
-                metalist.Add(dto);
-            }
+                List<MetaDTO> metalist = new List<MetaDTO>();
 
-            return metalist;
+                List<Meta> list = db.Metas
+                    .Where(x => x.isDeleted == false)
+                    .OrderBy(x => x.AddDate)
+                    .ToList();
+
+                foreach (var item in list)
+                {
+                    MetaDTO dto = new MetaDTO();
+                    dto.MetaID = item.ID;
+                    dto.Name = item.Name;
+                    dto.MetaContent = System.Text.Encoding.UTF7.GetString(item.MetaContent);
+                    metalist.Add(dto);
+                }
+
+                return metalist;
+            }
+                
         }
 
         public MetaDTO GetMetaWithID(int ID)
         {
-            Meta meta = db.Metas.First(x => x.ID == ID);
-            MetaDTO dto = new MetaDTO();
-            dto.MetaID = meta.ID;
-            dto.Name = meta.Name;
-            dto.MetaContent = System.Text.Encoding.UTF7.GetString(meta.MetaContent);
-            return dto;
+            using (POSTDATAEntities db = new POSTDATAEntities())
+            {
+                Meta meta = db.Metas.First(x => x.ID == ID);
+                MetaDTO dto = new MetaDTO();
+                dto.MetaID = meta.ID;
+                dto.Name = meta.Name;
+                dto.MetaContent = System.Text.Encoding.UTF7.GetString(meta.MetaContent);
+                return dto;
+            }
+                
         }
 
         public void DeleteMeta(int ID)
         {
-            try
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                Meta meta = db.Metas.First(x => x.ID == ID);
+                try
+                {
+                    Meta meta = db.Metas.First(x => x.ID == ID);
 
-                meta.isDeleted = true;
-                meta.DeletedDate = DateTime.Now;
-                meta.LastUpdateDate = DateTime.Now;
-                meta.LastUpdateUserID = UserStatic.UserID;
+                    meta.isDeleted = true;
+                    meta.DeletedDate = DateTime.Now;
+                    meta.LastUpdateDate = DateTime.Now;
+                    meta.LastUpdateUserID = UserStatic.UserID;
 
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
+                
         }
 
         public void UpdateMeta(MetaDTO model)
         {
-            try
+            using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                Meta meta = db.Metas.First(x => x.ID == model.MetaID);
-                meta.Name = model.Name;
-                meta.MetaContent = Encoding.UTF7.GetBytes(model.MetaContent);
-                meta.LastUpdateDate = DateTime.Now;
-                meta.LastUpdateUserID = UserStatic.UserID;
-            }
-            catch(Exception ex)
-            {
-                throw ex;
+                try
+                {
+                    Meta meta = db.Metas.First(x => x.ID == model.MetaID);
+                    meta.Name = model.Name;
+                    meta.MetaContent = Encoding.UTF7.GetBytes(model.MetaContent);
+                    meta.LastUpdateDate = DateTime.Now;
+                    meta.LastUpdateUserID = UserStatic.UserID;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
     }

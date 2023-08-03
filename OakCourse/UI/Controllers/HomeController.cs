@@ -125,6 +125,11 @@ namespace UI.Controllers
             dto = bll.GetSearchPosts(model.SearchText);
             return View(dto);
         }
+
+        public void test()
+        {
+            Console.WriteLine("xxxxxx");
+        }
     
     
     }

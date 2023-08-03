@@ -20,20 +20,7 @@
 
                 </div>
 
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Section Heading -->
-                        <div class="section-heading">
-                            <a href="@Model.Adslist[1].Link" target="_blank"><img src="~/Areas/Admin/Content/AdsImage/@Model.Adslist[1].ImagePath" /></a>
-                        </div>
-                    </div>
-                </div>
 
-                <br />
-
-                <div class="contact-form-area mt-50">
-                    @Html.Raw(Model.Address.LargeMapPath)
-                </div>
 
                 <br />
 
@@ -44,7 +31,7 @@
                             <label for="name">Name</label>
                             <input type="text" name="Name" class="form-control" id="name">
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="name">Subject</label>
                             <input type="text" name="Subject" class="form-control" id="subject">
@@ -62,6 +49,12 @@
 
                         <button class="btn vizew-btn mt-30" type="submit">Send Now</button>
                     </form>
+                </div>
+
+                <br />
+
+                <div class="contact-form-area mt-50">
+                    @Html.Raw(Model.Address.LargeMapPath)
                 </div>
 
                 <!-- Pagination -->

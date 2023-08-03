@@ -68,7 +68,6 @@ namespace UI.Controllers
             return View(model);
         }
 
-        [Route("contactusMag")]
         public ActionResult ContactUsMag()
         {
             HomeLayoutDTO layoutdto = new HomeLayoutDTO();
@@ -79,7 +78,6 @@ namespace UI.Controllers
             return View(dto);
         }
 
-        [Route("contactusMag")]
         [HttpPost]
         public ActionResult ContactUsMag(GeneralDTO model)
         {
@@ -105,7 +103,6 @@ namespace UI.Controllers
             return View(dto);
         }
 
-        [Route("SearchMag")]
         [HttpPost]
         public ActionResult SearchMag(GeneralDTO model)
         {

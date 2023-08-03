@@ -61,7 +61,7 @@ namespace DAL
 
             using (POSTDATAEntities db = new POSTDATAEntities())
             {
-                var postlist = (from post in db.Posts.Where(x => x.isDeleted == false)
+                List<PostDTO> postlist = (from post in db.Posts.Where(x => x.isDeleted == false)
                                 join category in db.Categories on post.CategoryID equals category.ID
                                 select new
                                 {
@@ -69,22 +69,16 @@ namespace DAL
                                     Title = post.Title,
                                     categoryname = category.CategoryName,
                                     AddDate = post.AddDate
-                                }).OrderByDescending(x => x.AddDate).ToList();
-
-
-
-                foreach (var item in postlist)
-                {
-                    PostDTO dto = new PostDTO
-                    {
-                        Title = item.Title,
-                        ID = item.ID,
-                        CategoryName = item.categoryname,
-                        AddDate = item.AddDate
-                    };
-
-                    dtolist.Add(dto);
-                }
+                                })
+                                .Select(x => new PostDTO()
+                                {
+                                    Title = x.Title,
+                                    ID = x.ID,
+                                    CategoryName = x.categoryname,
+                                    AddDate = x.AddDate
+                                })
+                                .OrderByDescending(x => x.AddDate)
+                                .ToList();
             }
 
             return dtolist;
@@ -107,11 +101,9 @@ namespace DAL
 
         public List<CommentDTO> GetAllComments()
         {
-            List<CommentDTO> dtolist = new List<CommentDTO>();
-
             using(POSTDATAEntities db= new POSTDATAEntities())
             {
-                var list = (from c in db.Comments.Where(x => x.isApproved == false)
+                List<CommentDTO> dtolist = (from c in db.Comments.Where(x => x.isApproved == false)
                             join p in db.Posts on c.PostID equals p.ID
                             select new
                             {
@@ -122,25 +114,21 @@ namespace DAL
                                 AddDate = c.AddDate,
                                 isapproved = c.isApproved
                             }
-                       ).OrderBy(x => x.AddDate).ToList();
-
-                foreach (var item in list)
-                {
-                    CommentDTO dto = new CommentDTO
-                    {
-                        ID = item.ID,
-                        PostTitle = item.PostTitle,
-                        Email = item.Email,
-                        CommentContent = item.Content,
-                        AddDate = item.AddDate,
-                        isApproved = item.isapproved
-                    };
-
-                    dtolist.Add(dto);
-                }
+                       )
+                       .Select(x => new CommentDTO()
+                       {
+                           ID = x.ID,
+                           PostTitle = x.PostTitle,
+                           Email = x.Email,
+                           CommentContent = x.Content,
+                           AddDate = x.AddDate,
+                           isApproved = x.isapproved
+                       })
+                       .OrderBy(x => x.AddDate)
+                       .ToList();
+                
+                return dtolist;
             }
-
-            return dtolist;
         }
 
         public void DeleteComment(int ID)
