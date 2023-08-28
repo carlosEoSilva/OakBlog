@@ -1,0 +1,118 @@
+//note-xx
+
+1- redirecionar para outro controller.
+
+2- redirecionar para outro método no mesmo controller.
+
+3- redirecionar para outro controller, o primeiro parâmetro é o método e o segundo é o controller.
+
+4- redirecionar para outro controller passando um parâmetro.
+
+5- o que está sendo informado aqui é o timpo do model que está vindo do Controller
+
+6- forma de inserir um form com método POST, o primeiro parâmetro é a 'action', o segundo é o controller, o terceiro é o timpo de form que no caso é POST, o objeto no quarto parâmetro é porque está sendo usando um layout na view.
+>@using (Html.BeginForm("UpdateEmployee", "Employee", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+
+7- o que faz a validação do model(entidade) são as notações em cima das propriedades do model.
+>[Required]
+ public string Name;
+ 
+8- dentro das anotações de validação é possível definir uma mensagem de erro padrão
+>[Required(ErrorMessage = "Please fill the name area")]
+ public string Name;
+ 
+ 9- é como se estivesse sendo feito um tipo de 'import' da classe 'UserDTO' que fica dentro da camada 'DTO'.
+ > @model DTO.UserDTO
+ 
+ 10- o name dos inputs correspondem as propriedades da classe UserDTO.
+ 
+ 11- o 'System.Text.Encoding.UTF8.GetString(-string-)' é para converter um bytearray em string.
+ 
+ 12- as mensagens de erro são definidas no campo [Required()] da classe que representa o model.
+ 
+ 13- o tipo de retorno 'JsonResult' pode ser usado no lugar do 'ViewResult', neste caso não será retornado uma view, então o tipo de retorno da função é 'JsonResult' para poder retornar um json vazio.
+ 
+ 14- a intrução ViewData["CommentState"] = "Success" é usada para enviar um valor para a view, neste exemplo será enviado o valor "Success" atravéz da chave "CommentState".
+ 
+ 15- nesta instrução var result = "@ViewData["CommentState"]" a variável "result" receberá o valor de "CommentState" que será enviado pelo controller usando o comando "ViewData[]".
+ 
+ 16- a instrução "routes.MapMvcAttributeRoutes();" permite acessar os ActionResult do controller atravéz da notação que fica em cima da declaração das funções. 
+ Ex: [Route("[nome da rota]")].
+ 
+ 17- criando uma instância da conexão com o banco usando o "using", quando a transação for terminada a conexão será automáticamente fechada.
+ 
+ 18- quando uma classe herda "FilterAttribute" e a interface "IActionFilter" ela se torna um atributo que pode ser usado em outros controllers.
+ 
+ Ex: public class LoginControl : FilterAttribute, IActionFilter //criando um atributo
+	 
+	 [LoginControl] //usando o atributo criado
+     public class BaseController : Controller
+	 
+19- quando é declarada uma instância do banco usando o 'using', depois que a operação do banco é realizada a conexão do banco é automáticamente encerrada.
+
+Ex: using(POSTDATAEntities db= new POSTDATAEntities())
+	{
+		lógica vai aqui...
+	}
+
+ 
+ ================================================================================
+ BIBLIOTECA
+ 
+- @model [nome do model enviado pelo controller]
+> informar o model que será usado na view
+  ex: @model List<DTO.GeneralDTO>
+ 
+- onclick="window.location.href='/Admin/Contact/AllMessages'
+> redirecionar para outra página usando um botão.
+ 
+- @item.AddDate.ToString("dd.mm.yyyy")
+  @item.AddDate.ToString("dd.mm.yyyy dddd")
+> é possível converter uma data para string informando uma máscara para definir o formado da data, quando é adicionado "dddd" na máscara, o nome do dia da semana é mostrado por extenso.
+
+- <a href="/Admin/Contact/ReadMessage/@item.ID">
+> a função de um controller poder ser chamada dentro de uma tag html "a".
+ 
+- RedirectToAction("UnreadMessages")
+  RedirectToAction(string actionName, string controllerName);
+  RedirectToAction(string actionName, string controllerName, object routeValues);
+> redireciona o fluxo para outra action dentro do controller, possui um overload que permite redirecionar para uma action em outro controller e passando um objeto como parâmetro. 
+ 
+- @Html.Partial("~/Areas/Admin/Views/Shared/ModalMessage.cshtml")
+> realizar a importação de um arquivo parcial que será usado na view.
+
+- Redirect([url]);
+> redirecionar o usuário para outro link
+
+ - string para bytes
+ Encoding.UTF7.GetBytes(-string-);
+ 
+ - bytes para string
+ System.Text.Encoding.UTF7.GetString(-byte-);
+ 
+ LogDAO.AddLog(General.ProcessType.xx, General.TableName.xx, ID);
+ 
+ ================================================================================
+IMPLEMENTAR A PERSISTÊNCIA DA SESSÃO
+ 1- criar um DTO com as informações do usuário a serem persistidas
+ Ex: public class SessionDTO
+    {
+        public int UserID { get; set; }
+        public bool isAdmin { get; set; }
+        public string Namesurname { get; set; }
+        public string Imagepath { get; set; }
+    }
+ 
+ - no LoginController criar um cookie usando a classe 'HttpCookie', o parâmetro do construtor é o nome do cookie.
+ Ex: HttpCookie cookie = new HttpCookie("Id");
+	 cookie.Value = user.ID.ToString();
+ 
+ - ainda no login controller, depois de criar o cookie, precisa usar o "FormsAuthentication" 
+ Ex: FormsAuthentication.SetAuthCookie(user.ID.ToString(), false);
+     Session.Add("UserInfo", session);
+     Session.Add("Id", user.ID);
+	 
+- depois de feita toda a configuração do cookie de sessão é só criar uma instância da classe da sessão para acessar as informações do usuário.
+Ex: SessionDTO session = (SessionDTO)Session["UserInfo"];
+ 
+ 
